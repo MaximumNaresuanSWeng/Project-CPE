@@ -47,7 +47,7 @@
 		</div>
 		
 		<div id = "paneltag3">
-		<a href = "about.php"><center><h1>About</h1></center></a>
+		<a href = "aboutsecond.php"><center><h1>About</h1></center></a>
 		</div>
 		
 		<div id = "paneltag4">
@@ -74,7 +74,7 @@
 				echo "&nbsp;&nbsp;";
 				echo $objResultstudent["s_lastname"];
 				echo "&nbsp;";
-				echo "<นิสิต>";
+				echo "<นักเรียน>";
 				}
 		session_write_close();
 		?>
