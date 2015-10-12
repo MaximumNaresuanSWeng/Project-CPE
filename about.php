@@ -48,11 +48,49 @@
 			<div id = "idm5"><center><font color = "#4169E1" size = "3"><b>55362394</b></font></center></div>
 			<div id = "tm5"><center><font color = "#4169E1" size = "3"><b>Sarayut Ruangsaeng</b></font></center></div>
 			<div id = "em5"><center><font color = "#4169E1" size = "3"><b>Sarayutr55@email.nu.ac.th</b></font></center></div>
+			
+
+
 		</div>
+		
+		<div id = "intext2">
+		<hr>
+			<br><center><font color = "#008080" size = "5"><b>Member Maximum Group</b></font></center>
+			
+			<div id ="mem6"></div>
+			<div id = "idm6"><center><font color = "#4169E1" size = "3"><b>55361281</b></font></center></div>
+			<div id = "tm6"><center><font color = "#4169E1" size = "3"><b>Assanee Saksiritantawan</b></font></center></div>
+			<div id = "em6"><center><font color = "#4169E1" size = "3"><b>assanepoi@hotmail.com</b></font></center></div>
+			
+			<div id ="mem7"></div>
+			<div id = "idm7"><center><font color = "#4169E1" size = "3"><b>55361878</b></font></center></div>
+			<div id = "tm7"><center><font color = "#4169E1" size = "3"><b>Chalitta Khampachua</b></font></center></div>
+			<div id = "em7"><center><font color = "#4169E1" size = "3"><b>chalittak55@email.nu.ac.th</b></font></center></div>
+			
+			<div id ="mem8"></div>
+			<div id = "idm8"><center><font color = "#4169E1" size = "3"><b>55361953</b></font></center></div>
+			<div id = "tm8"><center><font color = "#4169E1" size = "3"><b>Danusorn Salabsee</b></font></center></div>
+			<div id = "em8"><center><font color = "#4169E1" size = "3"><b>danusorns55@email.nu.ac.th</b></font></center></div>
+			
+			<div id ="mem9"></div>
+			<div id = "idm9"><center><font color = "#4169E1" size = "3"><b>55362059</b></font></center></div>
+			<div id = "tm9"><center><font color = "#4169E1" size = "3"><b>Theeraphong Seefong</b></font></center></div>
+			<div id = "em9"><center><font color = "#4169E1" size = "3"><b>theeraphongs55@email.nu.ac.th</b></font></center></div>
+			
+			<div id ="mem10"></div>
+			<div id = "idm10"><center><font color = "#4169E1" size = "3"><b>55362103</b></font></center></div>
+			<div id = "tm10"><center><font color = "#4169E1" size = "3"><b>Nitipat Thadsanapoom</b></font></center></div>
+			<div id = "em10"><center><font color = "#4169E1" size = "3"><b>nitipatt55@email.nu.ac.th</b></font></center></div>
+		</div>
+		
 		<center><br>
 			@copyright SuperStar<br>
 			เป็นส่วนหนึ่งของรายวิชา 305351 Computer System Engineering<br>
 			ภาคการศึกษาที่ 2 ปีการศึกษา 2557
+			<br><br>
+			@2015 copyright Maximum <br>
+			เป็นส่วนหนึ่งของรายวิชา 305471 Software Engineering<br>
+			ภาคการศึกษาที่ 1 ปีการศึกษา 2558
 		</center>
 	</div>
 	

@@ -108,6 +108,13 @@ body{
 	width:1000px;
 	margin: -5px auto;
 }
+#intext2{
+	position:relative;
+	background-color:PaleGoldenRod;
+	height:1000px;
+	width:1000px;
+	margin: -5px auto;
+}
 
 #intextpro{
 	position:relative;
@@ -185,10 +192,73 @@ body{
 	width:180px;
 	left:400px;
 	right:20%;
-	background-image: url("ant22.jpg");
+	background-image: url("ant.jpg");
 	background-size: 180px 220px;
 	background-repeat: no-repeat;
 }
+
+#mem6{
+	position:absolute;
+	background-color:#DCDCDC;
+	top:90px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%;
+	background-image: url("may22.jpg");
+	background-size: 180px 220px;
+	background-repeat: no-repeat;
+}
+
+#mem7{
+	position:absolute;
+	background-color:#DCDCDC;
+	top:90px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%;
+	background-image: url("may22.jpg");
+	background-size: 180px 220px;
+	background-repeat: no-repeat;
+}
+#mem8{
+	position:absolute;
+	background-color:#DCDCDC;
+	top:390px;
+	height:220px;
+	width:180px;
+	left:400px;
+	right:20%;
+	background-image: url("may22.jpg");
+	background-size: 180px 220px;
+	background-repeat: no-repeat;
+}
+#mem9{
+	position:absolute;
+	background-color:#DCDCDC;
+	top:700px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%;
+	background-image: url("may22.jpg");
+	background-size: 180px 220px;	
+	background-repeat: no-repeat;
+}
+#mem10{
+	position:absolute;
+	background-color:#DCDCDC;
+	top:700px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%;
+	background-image: url("may22.jpg");
+	background-size: 180px 220px;
+	background-repeat: no-repeat;
+}
+
 
 #tm1{
 	position:absolute;
@@ -246,7 +316,7 @@ body{
 
 #tm3{
 	position:absolute;
-	top:940px;
+	top:950px;
 	height:220px;
 	width:180px;
 	left:200px;
@@ -255,7 +325,7 @@ body{
 
 #idm3{
 	position:absolute;
-	top:920px;
+	top:930px;
 	height:220px;
 	width:180px;
 	left:200px;
@@ -264,7 +334,7 @@ body{
 
 #em3{
 	position:absolute;
-	top:960px;
+	top:970px;
 	height:220px;
 	width:180px;
 	left:200px;
@@ -273,7 +343,7 @@ body{
 
 #tm4{
 	position:absolute;
-	top:940px;
+	top:950px;
 	height:220px;
 	width:180px;
 	left:600px;
@@ -282,7 +352,7 @@ body{
 
 #idm4{
 	position:absolute;
-	top:920px;
+	top:930px;
 	height:220px;
 	width:180px;
 	left:600px;
@@ -291,7 +361,7 @@ body{
 
 #em4{
 	position:absolute;
-	top:960px;
+	top:970px;
 	height:220px;
 	width:180px;
 	left:600px;
@@ -300,7 +370,7 @@ body{
 
 #tm5{
 	position:absolute;
-	top:630px;
+	top:640px;
 	height:220px;
 	width:180px;
 	left:400px;
@@ -309,7 +379,7 @@ body{
 
 #idm5{
 	position:absolute;
-	top:610px;
+	top:620px;
 	height:220px;
 	width:180px;
 	left:400px;
@@ -318,12 +388,145 @@ body{
 
 #em5{
 	position:absolute;
-	top:650px;
+	top:660px;
 	height:220px;
 	width:180px;
 	left:400px;
 	right:20%
 }
+
+#idm6{
+	position:absolute;
+	top:320px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%
+}
+#em6{
+	position:absolute;
+	top:360px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%
+}
+
+#tm6{
+	position:absolute;
+	top:340px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%
+}
+
+#idm7{
+	position:absolute;
+	top:330px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%
+}
+#em7{
+	position:absolute;
+	top:370px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%
+}
+
+#tm7{
+	position:absolute;
+	top:350px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%
+}
+
+#tm8{
+	position:absolute;
+	top:640px;
+	height:220px;
+	width:180px;
+	left:400px;
+	right:20%
+}
+
+#idm8{
+	position:absolute;
+	top:620px;
+	height:220px;
+	width:180px;
+	left:400px;
+	right:20%
+}
+
+#em8{
+	position:absolute;
+	top:660px;
+	height:220px;
+	width:180px;
+	left:400px;
+	right:20%
+}
+
+#tm9{
+	position:absolute;
+	top:950px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%
+}
+
+#idm9{
+	position:absolute;
+	top:930px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%
+}
+
+#em9{
+	position:absolute;
+	top:970px;
+	height:220px;
+	width:180px;
+	left:200px;
+	right:20%
+}
+
+#idm10{
+	position:absolute;
+	top:930px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%
+}
+#em10{
+	position:absolute;
+	top:950px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%
+}
+
+#tm10{
+	position:absolute;
+	top:970px;
+	height:220px;
+	width:180px;
+	left:600px;
+	right:20%
+}
+
 
 #logoutloc{
 	position:absolute;
