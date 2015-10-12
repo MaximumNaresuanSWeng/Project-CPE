@@ -22,7 +22,7 @@
 		</div>
 		
 		<div id = "paneltag3">
-		<a href = "aboutsecond.php"><center><h1>About</h1></center></a>
+		<a href = "about.php"><center><h1>About</h1></center></a>
 		</div>
 	</div>
 	
