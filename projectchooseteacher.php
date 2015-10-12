@@ -92,8 +92,12 @@
 		</div>
 		<center>
 		@copyright SuperStar<br>
-		เป็นส่วนหนึ่งของรายวิชา 305351 Computer System Engineering<br>
-		ภาคการศึกษาที่ 2 ปีการศึกษา 2557<br>
+			เป็นส่วนหนึ่งของรายวิชา 305351 Computer System Engineering<br>
+			ภาคการศึกษาที่ 2 ปีการศึกษา 2557
+			<br><br>
+			@2015 copyright Maximum <br>
+			เป็นส่วนหนึ่งของรายวิชา 305471 Software Engineering<br>
+			ภาคการศึกษาที่ 1 ปีการศึกษา 2558
 		</center>
 	</div>
 	

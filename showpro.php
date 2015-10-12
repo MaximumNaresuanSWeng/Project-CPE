@@ -69,7 +69,7 @@ table, th, td {
 		</div>
 	</div>
 	
-	<div id = "panelbody">
+	<div id = "panelbody2">
 		<div><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สวัสดีคุณ&nbsp;&nbsp;</i>
 		
 	<?php 	
@@ -93,7 +93,7 @@ table, th, td {
 		</div>
 		
 	<center>
-	<br><br><br>
+	<br>
 	
 <?php
 $servername = "localhost";
@@ -179,13 +179,18 @@ if ($result->num_rows > 0) {
 }
 $conn->close();	*/
 ?>  
+<br>
 	</center>
 	</div>
 	
 	<center>
-	@copyright SuperStar<br>
-	เป็นส่วนหนึ่งของรายวิชา 305351 Computer System Engineering<br>
-	ภาคการศึกษาที่ 2 ปีการศึกษา 2557
+			@copyright SuperStar<br>
+			เป็นส่วนหนึ่งของรายวิชา 305351 Computer System Engineering<br>
+			ภาคการศึกษาที่ 2 ปีการศึกษา 2557
+			<br><br>
+			@2015 copyright Maximum <br>
+			เป็นส่วนหนึ่งของรายวิชา 305471 Software Engineering<br>
+			ภาคการศึกษาที่ 1 ปีการศึกษา 2558
 	</center>
 	
 

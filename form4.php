@@ -52,8 +52,8 @@
 	</div>
 	
 	<div id = "panelbody">
-	<div id = "intextform">
-	<?php echo $objResult["Name"];?>
+	<div id = "intextform3">
+	
 	<br><div><center><font color = "#CCCC33" size = "5"><b>Computer Engineering Form 04</b></font></center></div>
 	
 	<form action="saved.php" method="post">
@@ -118,6 +118,8 @@
 		
 		<br><br><center>
 		<input type="submit" value="บันทึก">
+		<br>
+		<br>
 		</center>
 		</form>	
 		</div>
@@ -126,6 +128,10 @@
 			@copyright SuperStar<br>
 			เป็นส่วนหนึ่งของรายวิชา 305351 Computer System Engineering<br>
 			ภาคการศึกษาที่ 2 ปีการศึกษา 2557
+			<br><br>
+			@2015 copyright Maximum <br>
+			เป็นส่วนหนึ่งของรายวิชา 305471 Software Engineering<br>
+			ภาคการศึกษาที่ 1 ปีการศึกษา 2558
 		</center>
 	</div>
 	
