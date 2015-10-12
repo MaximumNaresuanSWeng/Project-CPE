@@ -74,7 +74,7 @@
 				echo "&nbsp;&nbsp;";
 				echo $objResultstudent["s_lastname"];
 				echo "&nbsp;";
-				echo "<นักเรียน>";
+				echo "<นิสิต>";
 				}
 		session_write_close();
 		?>
