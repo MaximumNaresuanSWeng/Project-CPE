@@ -9,7 +9,7 @@
 <body>
 
 	<div id = "panelheader">
-		<div id = "logoutloc"><a href="logout.php">Logout</a></div>
+		
 	</div>
 	
 	<div id = "paneltab">
@@ -24,11 +24,16 @@
 		<div id = "paneltag3">
 		<a href = "aboutsecond.php"><center><h1>About</h1></center></a>
 		</div>
+		
+		<div id = "paneltag4">
+		<a href = "logout.php"><center><h1>Logout</h1></center></a>
+		</div>
+		
 	</div>
 	
 	<div id = "panelbody">
 	<div id = "intextform">
-	<?php echo $objResult["Name"];?>
+	
 	<br><div><center><font color = "#CCCC33" size = "5"><b>CPE07 แบบขอสอบโครงงานวิศวกรรมคอมพิวเตอร์  </b></font></center></div>
 	
 	<form action="saved.php" method="post">

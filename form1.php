@@ -54,7 +54,7 @@
 	
 	<div id = "panelbody">
 	<div id = "intextform">
-	<?php echo $objResult["Name"];?>
+	
 	<br><div><center><font color = "#CCCC33" size = "5"><b>CPE01 แบบเสนอหัวข้อโครงงานวิศวกรรมคอมพิวเตอร์   </b></font></center></div>
 	
 	<form action="saved.php" method="post">
