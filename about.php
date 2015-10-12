@@ -55,7 +55,7 @@
 		
 		<div id = "intext2">
 		<hr>
-			<br><center><font color = "#008080" size = "5"><b>Member Maximum Group</b></font></center>
+			<br><center><font color = "#008080" size = "5"><b>พัฒนาต่อโดย<br>Member Maximum Group</b></font></center>
 			
 			<div id ="mem6"></div>
 			<div id = "idm6"><center><font color = "#4169E1" size = "3"><b>55361281</b></font></center></div>
