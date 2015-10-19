@@ -1,98 +1,277 @@
-<!DOCTYPE HTML>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="main.css" />
-		<STYLE>
-			A:link { color: #F7B810; text-decoration:none}
-			A:visited {color: #F7B810; text-decoration: none}
-			A:hover {color: #F7B810}
-		</STYLE>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+
+
+<link rel="stylesheet" href="css/md-css.min.css">
+<link rel="stylesheet" href="css/md-icons.min.css">
+
 </head>
+<body material fluid >
 
-<body>
+	
+	
+	
+<div bg-grey100="" padded="">
+	
+	<div content>
+	 <div fluid card bg-Grey500 align-center>
 
-	<div id = "panelheader">
-	</div>
-	
-	<div id = "paneltab">
-		<div id = "panellogin">
-		<a href = "index.php"><center><h1>Login</h1></center></a>
-		</div>	
-		<div id = "panelabout">
-		<a href = "about.php"><center><h1>About</h1></center></a>
-		</div>
-	</div>
-	
-	<div id = "panelbody">
-		<div id = "intext">
-		<br><center><font color = "#008080" size = "5"><b>Member SuperStar Group</b></font></center>
-		<br>
-		<div id ="mem1"></div>
-			<div id = "idm1"><center><font color = "#4169E1" size = "3"><b>55361922</b></font></center></div>
-			<div id = "tm1"><center><font color = "#4169E1" size = "3"><b>Nattapoom Kamhanghan</b></font></center></div>
-			<div id = "em1"><center><font color = "#4169E1" size = "3"><b>Nattapoomk55@email.nu.ac.th</b></font></center></div>
-		<div id ="mem2"></div>
-			<div id = "idm2"><center><font color = "#4169E1" size = "3"><b>55362028</b></font></center></div>
-			<div id = "tm2"><center><font color = "#4169E1" size = "3"><b>Tarawee Pubpatong</b></font></center></div>
-			<div id = "em2"><center><font color = "#4169E1" size = "3"><b>Taraweep55@email.nu.ac.th</b></font></center></div>
-		<div id ="mem3"></div>
-			<div id = "idm3"><center><font color = "#4169E1" size = "3"><b>55362295</b></font></center></div>
-			<div id = "tm3"><center><font color = "#4169E1" size = "3"><b>Malulee Potha</b></font></center></div>
-			<div id = "em3"><center><font color = "#4169E1" size = "3"><b>Maluleep55@email.nu.ac.th</b></font></center></div>
-		<div id ="mem4"></div>
-			<div id = "idm4"><center><font color = "#4169E1" size = "3"><b>55362363</b></font></center></div>
-			<div id = "tm4"><center><font color = "#4169E1" size = "3"><b>Wijittha	Ratthanason</b></font></center></div>
-			<div id = "em4"><center><font color = "#4169E1" size = "3"><b>Wijitthar55@email.nu.ac.th</b></font></center></div>
-		<div id ="mem5"></div>
-			<div id = "idm5"><center><font color = "#4169E1" size = "3"><b>55362394</b></font></center></div>
-			<div id = "tm5"><center><font color = "#4169E1" size = "3"><b>Sarayut Ruangsaeng</b></font></center></div>
-			<div id = "em5"><center><font color = "#4169E1" size = "3"><b>Sarayutr55@email.nu.ac.th</b></font></center></div>
+		<div card="" z-0="" >
+	<button bg-teal ripple-color="tealA400" onclick="location.href='index.php'">Home</button>
+	<button bg-teal ripple-color="tealA400" onclick="location.href='detail.php'">Detail</button>
+	<?php
+		session_start();
+		if (isset($_SESSION["login_state"]))
+		{
+			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='load_balance.php'\">Data</button>";
+			if($_SESSION["status"] == "student")
+			{
+				echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='ViewCPE01.php'\">View</button>";
+			}
+			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='about.php'\">About</button>";
+			echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='logout.php'\">Log Out</button>";
+		}
+		else
+		{
 			
-
-
+			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='login.php'\">Log In</button>";
+			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='about.php'\">About</button>";
+			
+		}
+	?>
+	
 		</div>
 		
-		<div id = "intext2">
-		<hr>
-			<br><center><font color = "#008080" size = "5"><b>พัฒนาต่อโดย<br>Member Maximum Group</b></font></center>
-			
-			<div id ="mem6"></div>
-			<div id = "idm6"><center><font color = "#4169E1" size = "3"><b>55361281</b></font></center></div>
-			<div id = "tm6"><center><font color = "#4169E1" size = "3"><b>Assanee Saksiritantawan</b></font></center></div>
-			<div id = "em6"><center><font color = "#4169E1" size = "3"><b>assanepoi@hotmail.com</b></font></center></div>
-			
-			<div id ="mem7"></div>
-			<div id = "idm7"><center><font color = "#4169E1" size = "3"><b>55361878</b></font></center></div>
-			<div id = "tm7"><center><font color = "#4169E1" size = "3"><b>Chalitta Khampachua</b></font></center></div>
-			<div id = "em7"><center><font color = "#4169E1" size = "3"><b>chalittak55@email.nu.ac.th</b></font></center></div>
-			
-			<div id ="mem8"></div>
-			<div id = "idm8"><center><font color = "#4169E1" size = "3"><b>55361953</b></font></center></div>
-			<div id = "tm8"><center><font color = "#4169E1" size = "3"><b>Danusorn Salabsee</b></font></center></div>
-			<div id = "em8"><center><font color = "#4169E1" size = "3"><b>danusorns55@email.nu.ac.th</b></font></center></div>
-			
-			<div id ="mem9"></div>
-			<div id = "idm9"><center><font color = "#4169E1" size = "3"><b>55362059</b></font></center></div>
-			<div id = "tm9"><center><font color = "#4169E1" size = "3"><b>Theeraphong Seefong</b></font></center></div>
-			<div id = "em9"><center><font color = "#4169E1" size = "3"><b>theeraphongs55@email.nu.ac.th</b></font></center></div>
-			
-			<div id ="mem10"></div>
-			<div id = "idm10"><center><font color = "#4169E1" size = "3"><b>55362103</b></font></center></div>
-			<div id = "tm10"><center><font color = "#4169E1" size = "3"><b>Nitipat Thadsanapoom</b></font></center></div>
-			<div id = "em10"><center><font color = "#4169E1" size = "3"><b>nitipatt55@email.nu.ac.th</b></font></center></div>
-		</div>
-		
-		<center><br>
-			@copyright SuperStar<br>
-			เป็นส่วนหนึ่งของรายวิชา 305351 Computer System Engineering<br>
-			ภาคการศึกษาที่ 2 ปีการศึกษา 2557
-			<br><br>
-			@2015 copyright Maximum <br>
-			เป็นส่วนหนึ่งของรายวิชา 305471 Software Engineering<br>
-			ภาคการศึกษาที่ 1 ปีการศึกษา 2558
 		</center>
-	</div>
 	
-</body>
+        
+		
+    </div>
+      <div fluid card bg-Orange500="" align-center>
+	  
+	  <div card="" z-1="" bg-Red500 align-center >
+		
+				<h1>TEAM SUPER STAR</h1>
+	
+			</div>
+			
+			<br>
+	
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/jom2.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55361922
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Mr.Nattapoom Kamhanghan
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: Nattapoomk55@email.nu.ac.th
+	
+		</div>
+		
+		<br>
+		
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/boom2.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55362028
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Mr.Tarawee Pubpatong
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: Taraweep55@email.nu.ac.th
+	
+		</div>
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/ant2.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55362394
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Mr.Sarayut Ruangsaeng
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: Sarayutr55@email.nu.ac.th
+	
+		</div>
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/may2.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55362363
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Miss.Wijittha	Ratthanason
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: Wijitthar55@email.nu.ac.th
+	
+		</div>
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/pang2.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55362295
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Miss.Malulee Potha
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: Maluleep55@email.nu.ac.th
+	
+		</div>
+		
+		<br>
+		
+		<div card="" z-1="" bg-Red500 align-center >
+		
+				<h1>TEAM MAXXIMUM</h1>
+	
+			</div>
+			
+			<br>
+	
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/1.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55361281
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Mr.Assanee Saksiritantawan
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: assanepoi@hotmail.com
+	
+		</div>
+		
+		<br>
+		
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/2.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55361878
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Miss.Chalitta Khampachua
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: chalittak55@email.nu.ac.th
+	
+		</div>
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/3.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55361953
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Mr.Danusorn Salabsee
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: danusorns55@email.nu.ac.th
+	
+		</div>
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/4.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					&nbsp;&nbsp;&nbsp;ID: 55362059
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Mr.Theeraphong Seefong
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: theeraphongs55@email.nu.ac.th
+	
+		</div>
+		<div card="" z-0="" align-center >
+		
+			<div card="" z-1="" bg-Lime500 align-center >
+		
+				<img src="img/5.jpg" alt="Smiley face" align-center height="197" width="148">
+	
+			</div>
+			
+					<br>
+					 &nbsp;&nbsp;&nbsp;ID: 55362103
+					<br>
+					  &nbsp;&nbsp;&nbsp;Name: Miss.Nitipat Thadsanapoom
+					<br>
+					 &nbsp;&nbsp;&nbsp;E-mail: nitipatt55@email.nu.ac.th
+	
+		</div>
+		
+		
+
+	
+        
+		
+    </div>
+	
+	<div fluid card bg-Grey500="">
+
+		
+		<br>
+		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
+		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
+		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
+		
+	
+        
+	</div>
+
+	
+</div>
+
+
+	
+	
+	
+	<!-- load scripts at the end -->
+
+  <script src="js/zepto.min.js"></script>
+  <script src="js/velocity.min.js"></script>
+  <script src="js/md-js.min.js"></script>
+	
+  
+  </body>
 </html>

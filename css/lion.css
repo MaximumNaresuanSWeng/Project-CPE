@@ -1,0 +1,15 @@
+.schema-anim { 
+  clear: both;
+  
+  height: 400px;
+  width: 500px;
+ 
+  z-index: 1;
+  float: left;
+}
+div.schema-anim div#canvas_line_back, div.schema-anim div#canvas_line1, div.schema-anim div#canvas_container {
+  position: absolute;
+
+  height: 400px;
+  width: 500px;
+}
