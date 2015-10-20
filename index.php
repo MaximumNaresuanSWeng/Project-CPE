@@ -8,11 +8,7 @@
 
 <link rel="stylesheet" href="css/md-css.min.css">
 <link rel="stylesheet" href="css/md-icons.min.css">
-<link rel="stylesheet" href="css/news.css">
 
- <script type="text/javascript"> 
-
- </script>
       
 </head>
 <body material fluid >
@@ -60,47 +56,10 @@
 	  
 	
 		<div card="" z-0="" align-left >
-		
-	หน้าหลัก
-		<br>
-		<!--	<ul class="bxslider">
-			  <li><img src="img/027.jpg" title="Funky roots" /></li>
-			  <li><img src="img/NU Award 2015.jpg" title="The long and winding road" /></li>
-			  <li><img src="img/PromotionYecc2015.jpg" title="Happy trees" /></li>
-			</ul-->
+	
 			<img src = "img/027.jpg" width="100%"/>
 		</div>
-		<!--div class="wrapper">
-		<br><a1>-ข่าวประชาสัมพันธ์...</a1><br>
-				<!-- /comment  <ul id="sb-slider" class="sb-slider">
-					<li>
-						<a href="#" target="_blank"><img src="img/all3.png" /></a>
-						
-					</li>
-					<li>
-						<a href="#" target="_blank"><img src="img/NU Award 2015.jpg" /></a>
-						
-					</li><li>
-						<a href="#" target="_blank"><img src="img/icesit2015.png" /></a>
-						
-					</li><li>
-						<a href="#" target="_blank"><img src="img/PromotionYecc2015.jpg" /></a>
-						
-					</li><li>
-						<a href="#" target="_blank"><img src="img/027.jpg" /></a>
-						
-					<!--/li>
-					
-					
-				</ul>
-
-				<div id="shadow" class="shadow"></div>
-
-				<div id="nav-arrows" class="nav-arrows">
-					<a href="#">Next</a>
-					<a href="#">Previous</a>
-				</div -->
-		</div><!-- /wrapper -->
+		
 
 	
         
@@ -109,20 +68,26 @@
 	
 	<div fluid card bg-Grey500="">
 
-		
-		<br>
+			
+				 
 		<font color="white">
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
-		 </font>
-	
-        
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
+		
+		
+		<div>
+						<font color="white">Page ID : 1</font>
+		</div>
+		
 	</div>
 
 	
+	
 </div>
 
-
+ 
 	
 	
 	
