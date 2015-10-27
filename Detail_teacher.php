@@ -18,9 +18,15 @@
 		//$Co_Advisors = mysql_fetch_array($query_Co_Advisors);
 		
 		
-		$query_Committee = mysql_query ("SELECT * FROM `Project` WHERE Committee = '".$_SESSION["ID_USER"]."'");
+		$query_Committee = mysql_query ("SELECT * FROM `Project` WHERE Committee = '".$_SESSION["ID_USER"]."' ");
+		
+		$query_Special_Committee = mysql_query ("SELECT * FROM `Project` WHERE Special_Committee = '".$_SESSION["ID_USER"]."' ");
 		
 		//$Committee = mysql_fetch_array($query_Committee);
+		
+		$query_statuspj = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_USER"]."'");
+		$statuspj = mysql_fetch_array($query_statuspj);
+		
 		}
 		else
 		{
@@ -125,11 +131,53 @@
 						<?php echo $dataAdvisors[1];?>
 						</div></td>
 						<td><div align="center">
-							สถานะการแจ้งเตือน
-						</div></td>
-						<td><div align="center">
-						<button bg-teal ripple-color="tealA400" onclick="location.href='ViewCPE01teacher.php?id=<?php echo $dataAdvisors[0];?>'">Read more</button>
-						</div></td>
+							<?php 
+								if($dataAdvisors[6]==1)
+								{
+									echo "รอการยืนยัน  CPE01 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==2)
+								{
+									echo "ไม่มีสถานะการแจ้งเตือน";
+								}
+								else if($dataAdvisors[6]==3)
+								{
+									echo "รอยืนยัน  CPE02 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6] >=3 && $statuspj[5] == 1)
+								{
+									echo "รอยืนยัน  CPE02 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==5)
+								{
+									echo "รอยืนยัน  CPE03 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE03teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==999)
+								{
+									echo "ไม่ได้รับการยืนยัน ";
+								}
+								else
+								{
+										echo "ไม่มีสถานะการแจ้งเตือน";
+								}
+							?>
+							
 					</tr>
 					<?php
 					}
@@ -178,11 +226,52 @@
 						<?php echo $dataCo_Advisors[1];?>
 						</div></td>
 						<td><div align="center">
-							สถานะการแจ้งเตือน
-						</div></td>
-						<td><div align="center">
-						<button bg-teal ripple-color="tealA400" onclick="location.href='ViewCPE01teacher.php?id=<?php echo $dataAdvisors[0];?>'">Read more</button>
-						</div></td>
+							<?php 
+								if($dataAdvisors[6]==1)
+								{
+									echo "รอการยืนยัน  CPE01 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==2)
+								{
+									echo "ไม่มีสถานะการแจ้งเตือน";
+								}
+								else if($dataAdvisors[6]==3)
+								{
+									echo "รอยืนยัน  CPE02 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6] >=3 && $statuspj[5] == 1)
+								{
+									echo "รอยืนยัน  CPE02 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==5)
+								{
+									echo "รอยืนยัน  CPE03 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE03teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==999)
+								{
+									echo "ไม่ได้รับการยืนยัน ";
+								}
+								else
+								{
+										echo "ไม่มีสถานะการแจ้งเตือน";
+								}
+							?>
 					</tr>
 					<?php
 					}
@@ -231,10 +320,74 @@
 						<?php echo $dataCommittee[1];?>
 						</div></td>
 						<td><div align="center">
+							<?php 
+								if($dataAdvisors[6]==1)
+								{
+									echo "รอการยืนยัน  CPE01 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==2)
+								{
+									echo "ไม่มีสถานะการแจ้งเตือน";
+								}
+								else if($dataAdvisors[6]==3)
+								{
+									echo "รอยืนยัน  CPE02 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6] >=3 && $statuspj[5] == 1)
+								{
+									echo "รอยืนยัน  CPE02 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==5)
+								{
+									echo "รอยืนยัน  CPE03 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE03teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==999)
+								{
+									echo "ไม่ได้รับการยืนยัน ";
+								}
+								else
+								{
+										echo "ไม่มีสถานะการแจ้งเตือน";
+								}
+							?>
+						</div></td>
+					</tr>
+					<?php
+					}
+					?>
+				<?php
+					$data = 0;
+					while($dataSpecial_Committee = mysql_fetch_array($query_Special_Committee))
+					{$data++;
+					?>
+					<tr>
+						<td style="width: 50px"><div align="center" >
+						<?php echo $data;?>
+						</div></td>
+						<td><div align="center">
+						<?php echo $dataSpecial_Committee[1];?>
+						</div></td>
+						<td><div align="center">
 							สถานะการแจ้งเตือน
 						</div></td>
 						<td><div align="center">
-						<button bg-teal ripple-color="tealA400" onclick="location.href='ViewCPE01teacher.php?id=<?php echo $dataAdvisors[0];?>'">Read more</button>
+						<button bg-teal ripple-color="tealA400" onclick="location.href='ViewCPE01teacher.php?id=<?php echo $dataSpecial_Committee[0]."&state=Special_Committee";?>'">Read more</button>
 						</div></td>
 					</tr>
 					<?php
@@ -267,10 +420,15 @@
 
 		
 		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
 		
+		<div align=right>
+		<font color="white"> Page ID : 7 </font>
+		</div>
 	
         
 	</div>

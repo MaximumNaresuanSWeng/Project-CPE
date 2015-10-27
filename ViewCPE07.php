@@ -29,6 +29,10 @@
 		
 		$Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[9]."'");
 		$dataCommittee = mysql_fetch_array($Committee);
+		
+		$Special_Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[10]."'");
+		$dataSpecial_Committee = mysql_fetch_array($Special_Committee);
+		
 		}
 		else
 		{
@@ -237,6 +241,9 @@
 			<td><div align="center">
 			กรรมการ
 			</div></td>
+			<td><div align="center">
+			กรรมการ
+			</div></td>
 			
 			
         </tr>
@@ -246,21 +253,26 @@
 		<tr>
 			<td>
 			<div align="center">
-			 <?php echo $dataAdvisors[4]."".$dataAdvisors[5];?>
+			 <?php echo $dataAdvisors[4]." ".$dataAdvisors[5];?>
 			 </div>
 			</td>
 			
 			<td>
 			<div align="center">
-			<?php echo $dataCo_Advisors[4]."".$dataCo_Advisors[5];?>
+			<?php echo $dataCo_Advisors[4]." ".$dataCo_Advisors[5];?>
 			</div>
 			</td>
 			
 			<td>
 			<div align="center">
-			<?php echo $dataCommittee[4]."".$dataCommittee[5];?>
+			<?php echo $dataCommittee[4]." ".$dataCommittee[5];?>
 			</div>
-		
+			</td>
+			
+			<td>
+			<div align="center">
+			<?php echo $dataSpecial_Committee[4]." ".$dataSpecial_Committee[5];?>
+			</div>
 			</td>
 		
 		</tr>
@@ -284,13 +296,15 @@
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
-		
-	
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
         
+		<div align=right>
+		<font color="white"> Page ID : 5 CPE 07 </font>
+		</div>
 	</div>
 
 	

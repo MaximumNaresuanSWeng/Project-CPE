@@ -102,9 +102,13 @@
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE02.php'\">CPE02</button>";
 				}
-				if($project[6] == 2)
+				if($project[6] >= 4)
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE03.php'\">CPE03</button>";
+				}
+				if($project[6] >= 6)
+				{
+					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE04.php'\">CPE04</button>";
 				}
 				}
 				
@@ -183,13 +187,15 @@
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
-		
-	
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
         
+		<div align=right>
+		<font color="white"> Page ID : 6 CPE 02 </font>
+		</div>
 	</div>
 
 	

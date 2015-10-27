@@ -8,6 +8,11 @@
 
 <link rel="stylesheet" href="css/md-css.min.css">
 <link rel="stylesheet" href="css/md-icons.min.css">
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+  <!-- This is what you need -->
+  <script src="sweetalert/dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
 
 </head>
 <body material fluid >
@@ -38,7 +43,7 @@
 	
 		<div card="" z-0="" align-left >
 		
-	<form name="form1" method="post" action="Check_login.php" >
+	<form name="form1" method="post" onsubmit="return required()" action="Check_login.php" >
 		
 			<div control>
 				Username
@@ -64,15 +69,63 @@
 		
     </div>
 	
+<script type="text/javascript"> 
+//$idMember = false;
+var check_login = "<?php  $idMember = $_REQUEST['check']; echo $idMember;?>";
+
+	if(check_login=="false")	
+	{	
+		swal({title: "ล็อกอินผิดพลาด \nusername หรือ Password\nไม่ถูกต้อง",type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+	}
+//header("location:login.php");
+
+ function required()
+{
+	
+	var user = document.forms["form1"]["user"].value;
+	var password = document.forms["form1"]["password"].value;
+	
+	
+	if ((user == "" && password == ""))
+	{
+		//alert("กรุณาใส่ \nusername และ password");
+		swal({title: "กรุณาใส่ \nusername และ password",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false }); 
+		return false;
+	}
+	
+	else if(user != "" && password == "" )
+	{
+		swal({title: "กรุณาใส่ \npassword",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false }); 
+		return false;
+	}
+	
+	else if(user == "" && password != "" )
+	{
+		swal({title: "กรุณาใส่ \nusername",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false }); 
+		return false;
+	}
+	else 
+	{
+		return true;
+	}
+	
+
+}
+
+
+ </script>
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>	
 		
-	
+		<div>
+		<font color="white"> Page ID : 3 </font>
+		</div>
         
 	</div>
 

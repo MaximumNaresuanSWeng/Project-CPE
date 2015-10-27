@@ -17,7 +17,7 @@
 	$insertCPE03 = mysql_query ("INSERT INTO `SWEN`.`CPE03` (`id`, `scope_project`, `Committee1`, `Committee2`, `Committee3`, `ID_project`, `created_at`) 
 	VALUES (NULL, '".$works."', '', '', '', '".$_SESSION["ID_project"]."', CURRENT_TIMESTAMP)");
 	
-	$UpdateProject = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '3' WHERE  `Project`.`id` = '".$_SESSION["ID_project"]."'");
+	$UpdateProject = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '5' WHERE  `Project`.`id` = '".$_SESSION["ID_project"]."'");
 	
 	
 	

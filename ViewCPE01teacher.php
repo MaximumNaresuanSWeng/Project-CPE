@@ -8,6 +8,9 @@
 			mysql_select_db(DB_NAME);
 			mysql_query("SET NAMES UTF8");
 		$ID = $_REQUEST['id'];
+		$STATE = $_REQUEST['state'];
+		
+		$_SESSION["Teacher_state_project"] = $STATE;
 		
 			$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$ID."'");
 			$project = mysql_fetch_array($query_project);
@@ -64,7 +67,7 @@
   <!-- This is what you need -->
   <script src="sweetalert/dist/sweetalert-dev.js"></script>
   <link rel="stylesheet" href="sweetalert/dist/sweetalert.css">
-
+<link rel="stylesheet" href="css/progress.css">
 
 </head>
 <body material fluid >
@@ -112,20 +115,221 @@
 	
 	     <div bg-grey100="" padded="">
 		 
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE01teacher.php?id=<?php echo $ID;?>'">VIEW CPE01</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE02teacher.php?id=<?php echo $ID;?>'">VIEW CPE02</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE03teacher.php?id=<?php echo $ID;?>'">VIEW CPE03</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE04teacher.php?id=<?php echo $ID;?>'">VIEW CPE04</button>
-		
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE05teacher.php?id=<?php echo $ID;?>'">VIEW CPE05</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE06teacher.php?id=<?php echo $ID;?>'">VIEW CPE06</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE07teacher.php?id=<?php echo $ID;?>'">VIEW CPE07</button>
-				
+				<div class="progress">
+<!-------------------------------------------------------------------- CPE01 --------------------------------------------->
+  <div class="<?php
+		if($project[6]==1)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]>=2)
+		{
+			echo "circle done";
+			
+		}
+		else
+		{
+			echo "circle";
+			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=1)
+		{
+			echo "onclick=\"location.href='ViewCPE01teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==1)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]>=2)
+		{
+			echo "✔";
+			
+		}
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
+    <span class="title">CPE01</span>
+  </div>
+  <span <?php
+		if($project[6]==1)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]>=2)
+		{
+			echo"class=\"bar done\"";
+			
+		}
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span>
+  
+ <!-------------------------------------------------------------------- CPE02 ---------------------------------------------> 
+  <div class="<?php
+		if($project[6]==3)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]>=4)
+		{
+			echo "circle done";
+			
+		}
+		else
+		{
+			echo "circle";			
+		}
+	?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=3)
+		{
+			echo "onclick=\"location.href='ViewCPE02teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+		<?php
+		if($project[6]==3)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]>=4)
+		{
+			echo "✔";
+			
+		}
+		else
+		{
+			echo "✖";			
+		}
+	?>
+	</span>
+    <span class="title">CPE02</span>
+  </div>
+  <span <?php
+		if($project[6]==3)
+		{
+			echo"class=\"bar active \"";
+			
+			
+		}
+		else if($project[6]>=4)
+		{
+			echo"class=\"bar done \"";
+			
+		}
+		else
+		{
+			echo"class=\"bar \"";
+			
+		}
+	?>>  
+  </span>
+  
+  
+ <!-------------------------------------------------------------------- CPE03 ---------------------------------------------> 
+  <div class="<?php
+		if($project[6]==5)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]>=6)
+		{
+			echo "circle done";
+			
+		}
+		else
+		{
+			echo "circle";
+			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=5)
+		{
+			echo "onclick=\"location.href='ViewCPE03teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==5)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]>=6)
+		{
+			echo "✔";
+			
+		}
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
+    <span class="title">CPE03</span>
+  </div>
+  <span <?php
+		if($project[6]==5)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]>=6)
+		{
+			echo"class=\"bar done\"";
+			
+		}
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span>
+  
+  
+  
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE04</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE05</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE06</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE07</span>
+  </div>
+</div>
 				
 		</div>
 
@@ -306,8 +510,12 @@
 			}
 			else
 			{
-				echo "<button  ripple-color='tealA400'  bg-Red500 onclick=\"confirm(999,".$ID.")\">ไม่ยืนยัน</button>";
-				echo "<button  ripple-color='tealA400' bg-Green500 onclick=\"confirm(2,".$ID.")\">ยืนยัน</button>";
+				if(($_SESSION["ID_USER"] == $project[7]) || ($_SESSION["ID_USER"] == $project[8]))
+				{
+					echo "<button  ripple-color='tealA400'  bg-Red500 onclick=\"confirm(999,".$ID.")\">ไม่ยืนยัน</button>";
+					echo "<button  ripple-color='tealA400' bg-Green500 onclick=\"confirm(2,".$ID.")\">ยืนยัน</button>";
+				}
+				
 			}
 				
 		?>
@@ -324,12 +532,12 @@ function confirm(status,id)
 		
 		$.getJSON('UpdateCPE01.php?id='+id+"&status="+status, function(jd) {
 				
-				//swal({title: "ข้อมูล"+status+id,      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		
 		  window.location.replace("ViewCPE01teacher.php?id="+id);
               });
 			  
 			   
-}
+} 
  </script>
 		
 		
@@ -343,13 +551,13 @@ function confirm(status,id)
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
-		
-	
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
         
+
 	</div>
 
 	

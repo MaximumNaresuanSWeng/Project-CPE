@@ -8,17 +8,10 @@
 			mysql_select_db(DB_NAME);
 			mysql_query("SET NAMES UTF8");
 		$ID = $_REQUEST['id'];
-		if($_SESSION["status"] == "teacher")
-		{
-			$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$ID."'");
-			$project = mysql_fetch_array($query_project);
-		}
-		else
-		{
+		
 			$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
 			$project = mysql_fetch_array($query_project);
-		}
-	
+		
 		
 		
 		$query_Student_USER1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
@@ -38,6 +31,9 @@
 		
 		$Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[9]."'");
 		$dataCommittee = mysql_fetch_array($Committee);
+		
+		$Special_Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[10]."'");
+		$dataSpecial_Committee = mysql_fetch_array($Special_Committee);
 		}
 		else
 		{
@@ -61,7 +57,7 @@
 <link rel="stylesheet" href="css/md-icons.min.css">
 <link rel="stylesheet" href="css/dropdown2.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
+<link rel="stylesheet" href="css/progress.css">
 
 </head>
 <body material fluid >
@@ -109,19 +105,223 @@
 	
 	     <div bg-grey100="" padded="">
 		 
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE01.php'">CPE01</button>
+		 <div class="progress">
+	<!---------------------------------------------------------------- CPE01 -------------------------------------->
+  <div class="<?php
+		if($project[6]==1)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]>=2)
+		{
+			echo "circle done";
+			
+		}
+		else
+		{
+			echo "circle";
+			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=1)
+		{
+			echo "onclick=\"location.href='ViewCPE01.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==1)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]>=2)
+		{
+			echo "✔";
+			
+		}
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
+    <span class="title">CPE01</span>
+  </div>
+  <span <?php
+		if($project[6]==1)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]>=2)
+		{
+			echo"class=\"bar done\"";
+			
+		}
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span>
+  
+  <!----------------------------------------------------------------------------- CPE02 -------------------------------------->
+  <div class="<?php
+		if($project[6]==3)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]>=4)
+		{
+			echo "circle done";
+			
+		}
+		else
+		{
+			echo "circle";			
+		}
+	?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=3)
+		{
+			echo "onclick=\"location.href='ViewCPE02.php?id=".$ID."'\"";
+		}	
+	?>>
+		<?php
+		if($project[6]==3)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]>=4)
+		{
+			echo "✔";
+			
+		}
+		else
+		{
+			echo "✖";			
+		}
+	?>
+	</span>
+    <span class="title">CPE02</span>
+  </div>
+  <span <?php
+		if($project[6]==3)
+		{
+			echo"class=\"bar active \"";
+			
+		}
+		else if($project[6]>=4)
+		{
+			echo"class=\"bar done \"";
+			
+		}
+		else
+		{
+			echo"class=\"bar \"";
+			
+		}
+	?>>  
+  </span>
+  
+  <!--------------------------------------------------------- CPE03 ------------------------------------------------------------------->
+  <div class="<?php
+		if($project[6]==5)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]>=6)
+		{
+			echo "circle done";
+			
+		}
+		else
+		{
+			echo "circle";
+			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=5)
+		{
+			echo "onclick=\"location.href='ViewCPE03.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==5)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]>=6)
+		{
+			echo "✔";
+			
+		}
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
+    <span class="title">CPE03</span>
+  </div>
+  <span <?php
+		if($project[6]==5)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]>=6)
+		{
+			echo"class=\"bar done\"";
+			
+		}
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span>
+  
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE04</span>
+  </div>
+  <span class="bar"></span>
+  
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE05</span>
+  </div>
+  <span class="bar"></span>
+  
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE06</span>
+  </div>
+  <span class="bar"></span>
+  
+  <div class="circle">
+    <span class="label" >✖</span>
+    <span class="title">CPE07</span>
+  </div>
+</div>
+ 
+		 
 				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE02.php'">CPE02</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE03.php'">CPE03</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE04.php'">CPE04</button>
-		
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE05.php'">CPE05</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE06.php'">CPE06</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='ViewCPE07.php'">CPE07</button>
 				
 				
 		</div>
@@ -246,6 +446,9 @@
 			<td><div align="center">
 			กรรมการ
 			</div></td>
+			<td><div align="center">
+			กรรมการ
+			</div></td>
 			
 			
         </tr>
@@ -255,22 +458,28 @@
 		<tr>
 			<td>
 			<div align="center">
-			 <?php echo $dataAdvisors[4]."".$dataAdvisors[5];?>
+			 <?php echo $dataAdvisors[4]." ".$dataAdvisors[5];?>
 			 </div>
 			</td>
 			
 			<td>
 			<div align="center">
-			<?php echo $dataCo_Advisors[4]."".$dataCo_Advisors[5];?>
+			<?php echo $dataCo_Advisors[4]." ".$dataCo_Advisors[5];?>
 			</div>
 			</td>
 			
 			<td>
 			<div align="center">
-			<?php echo $dataCommittee[4]."".$dataCommittee[5];?>
+			<?php echo $dataCommittee[4]." ".$dataCommittee[5];?>
 			</div>
-		
 			</td>
+			
+			<td>
+			<div align="center">
+			<?php echo $dataSpecial_Committee[4]." ".$dataSpecial_Committee[5];?>
+			</div>
+			</td>
+			
 		
 		</tr>
 		
@@ -293,13 +502,15 @@
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
-		
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
 	
-        
+        <div align=right>
+		<font color="white"> Page ID : 5 CPE 01 </font>
+		</div>
 	</div>
 
 	

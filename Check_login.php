@@ -2,10 +2,11 @@
 	header('Content-type: text/plain; charset=utf-8');
 	
 	session_start();
-	
-	
+
 	$user		= $_POST['user'];	
 	$password		= $_POST['password'];	
+	
+	
 	
 	
 	
@@ -21,7 +22,6 @@
 	
 	if($query1)
 	{
-	
 		$_SESSION["id"] = $query1[0];
 		$_SESSION["email"] = $query1[2];
 		$_SESSION["firstnameTH"] = $query1[4];
@@ -41,10 +41,10 @@
 		
 	}
 	else
-	{
-		echo "false";
+	{	
+		
 		session_write_close();
-		header("location:login.php");
+		header("location:login.php?check=false");
 	}
 	
 	

@@ -8,7 +8,7 @@
 			mysql_select_db(DB_NAME);
 			mysql_query("SET NAMES UTF8");
 		
-		$query_Project = mysql_query ("SELECT * FROM `Project` WHERE project_status = 3 ");
+		$query_Project = mysql_query ("SELECT * FROM `Project` WHERE project_status < 7  AND Special_Committee = ''");
 		
 		
 		}
@@ -140,11 +140,11 @@
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
-		
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
 	
         
 	</div>

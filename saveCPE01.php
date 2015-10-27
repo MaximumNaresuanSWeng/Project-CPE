@@ -1,5 +1,5 @@
 <?php
-	//header('Content-type: text/plain; charset=utf-8');
+	header('Content-type: text/plain; charset=utf-8');
 	session_start();
 	
 	include_once dirname(__FILE__) . '/Config.php';
@@ -17,6 +17,8 @@
 	$Co_Advisors	= $_POST['Co_Advisors'];			
 	$Committee	= $_POST['Committee'];			
 	
+
+	
 	
 	$deleteProject = mysql_query ("DELETE FROM `SWEN`.`Project` WHERE `Project`.`id` = '".$_SESSION["ID_project"]."'");
 	
@@ -25,7 +27,7 @@
 	{
 		
 		$INSERTdata = mysql_query ("INSERT INTO `SWEN`.`Project` (`id`, `name_projectTH`, `name_projectEN`, `ID_Student1`, `ID_Student2`, `ID_Student3`, `project_status`, `ID_Advisors`, `ID_Co_Advisors`, `Committee`, `created_at`) 
-		VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', '".$ID_USER2."', '".$ID_USER3."', '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."', CURRENT_TIMESTAMP);");
+		VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', '".$ID_USER2."', '".$ID_USER3."', '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."', CURRENT_TIMESTAMP)");
 		
 		$getMAX = mysql_query ("SELECT MAX(id) FROM Project");
 		
@@ -37,14 +39,14 @@
 	
 		$_SESSION["ID_project"] = $MAX[0];
 		
-		
+	
 	
 	}
 	else if($ID_USER2 != "" && $ID_USER3 == "")
 	{
 		
 		$INSERTdata = mysql_query ("INSERT INTO `SWEN`.`Project` (`id`, `name_projectTH`, `name_projectEN`, `ID_Student1`, `ID_Student2`, `ID_Student3`, `project_status`, `ID_Advisors`, `ID_Co_Advisors`, `Committee`, `created_at`) 
-		VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', '".$ID_USER2."', NULL, '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."', CURRENT_TIMESTAMP);");
+		VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', '".$ID_USER2."', '', '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."', CURRENT_TIMESTAMP)");
 		
 		$getMAX = mysql_query ("SELECT MAX(id) FROM Project");
 		
@@ -55,13 +57,13 @@
 	
 		$_SESSION["ID_project"] = $MAX[0];
 		
-			
+		
 	}
 	else if($ID_USER2 == "" && $ID_USER3 != "")
 	{
 		
 		$INSERTdata = mysql_query ("INSERT INTO `SWEN`.`Project` (`id`, `name_projectTH`, `name_projectEN`, `ID_Student1`, `ID_Student2`, `ID_Student3`, `project_status`, `ID_Advisors`, `ID_Co_Advisors`, `Committee`, `created_at`) 
-		VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', '".$ID_USER3."', NULL, '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."', CURRENT_TIMESTAMP);");
+		VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', '".$ID_USER3."', '', '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."', CURRENT_TIMESTAMP)");
 		
 		$getMAX = mysql_query ("SELECT MAX(id) FROM Project");
 		
@@ -72,12 +74,14 @@
 	
 		$_SESSION["ID_project"] = $MAX[0];
 		
-	
+		
 	}
 	else
 	{
 		
-		$INSERTdata = mysql_query ("INSERT INTO `SWEN`.`Project` (`id`, `name_projectTH`, `name_projectEN`, `ID_Student1`, `ID_Student2`, `ID_Student3`, `project_status`, `ID_Advisors`, `ID_Co_Advisors`, `Committee`, `created_at`) VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', NULL, NULL, '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."', CURRENT_TIMESTAMP)");
+		$INSERTdata = mysql_query ("INSERT INTO `SWEN`.`Project` (`id`, `name_projectTH`, `name_projectEN`, `ID_Student1`, `ID_Student2`, `ID_Student3`, `project_status`, `ID_Advisors`, `ID_Co_Advisors`, `Committee`,`Special_Committee` , `created_at`) 
+		VALUES (NULL, '".$name_projectTH."', '".$name_projectEN."', '".$ID_USER1."', '', '', '1', '".$Advisors."', '".$Co_Advisors."', '".$Committee."','', CURRENT_TIMESTAMP)");
+		
 		
 		$getMAX = mysql_query ("SELECT MAX(id) FROM Project");
 		
@@ -88,13 +92,12 @@
 	
 		$_SESSION["ID_project"] = $MAX[0];
 		
-	
+		
 	}
 	
 	
 	
-	
-	echo $MAX[0]."bshtaer";	
+
 	
 	header("location:load_balance.php");	
 	

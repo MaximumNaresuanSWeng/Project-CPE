@@ -15,6 +15,14 @@
 		
 		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
 		$project = mysql_fetch_array($query_project);
+		
+		$Student1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
+		$Student2 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[4]."'");
+		$Student3 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[5]."'");
+		
+		$Student1_data = mysql_fetch_array($Student1);
+		$Student2_data = mysql_fetch_array($Student2);
+		$Student3_data = mysql_fetch_array($Student3);
 			
 		}
 		else
@@ -107,9 +115,13 @@
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE02.php'\">CPE02</button>";
 				}
-				if($project[6] == 2)
+				if($project[6] >= 4)
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE03.php'\">CPE03</button>";
+				}
+				if($project[6] >= 6)
+				{
+					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE04.php'\">CPE04</button>";
 				}
 				}
 				
@@ -128,15 +140,15 @@
 	
 	     
 		 
-			<h4>ชื่อโครงงาน</h4>
+			<h4>ชื่อโครงงาน <?php echo $_SESSION["ID_project"];?></h4>
 			<form name="formdata" id="formdata" onsubmit="return required()" method="post" action="saveCPE01.php" >
 		
 			
 				ภาษาไทย<font color="red"> *</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" placeholder="ภาษาไทย" name="name_projectTH" id="name_projectTH" maxlength="300" size="300" onkeyup="isThaichar(this.value,this)" style="width: 500px">
+				<input value="<?php echo $project[1];?>" type="text" placeholder="ภาษาไทย" name="name_projectTH" id="name_projectTH" maxlength="300" size="300" onkeyup="isThaichar(this.value,this)" style="width: 500px">
 			<br>
 				ภาษาอังกฤษ<font color="red"> *</font>&nbsp;&nbsp;
-				<input type="text" placeholder="ภาษาอังกฤษ" name="name_projectEN" id="name_projectEN" maxlength="300" size="300" onkeyup="isENchar(this.value,this)" style="width: 500px">
+				<input value="<?php echo $project[2];?>" type="text" placeholder="ภาษาอังกฤษ" name="name_projectEN" id="name_projectEN" maxlength="300" size="300" onkeyup="isENchar(this.value,this)" style="width: 500px">
 			<br>
 			
 <script type="text/javascript">
@@ -160,7 +172,7 @@ function isThaichar(str,obj){
 	return isThai; // ถ้าเป็น true แสดงว่าเป็นภาษาไทยทั้งหมด
 }
 function isENchar(str,obj){
-	var orgi_text="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM? ().";
+	var orgi_text="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM?_ ().";
 	//var orgi_text="ๅภถุึคตจขชๆไำพะัีรนยบลฃฟหกดเ้่าสวงผปแอิืทมใฝ๑๒๓๔ู฿๕๖๗๘๙๐ฎฑธํ๊ณฯญฐฅฤฆฏโฌ็๋ษศซฉฮฺ์ฒฬฦ ().";
 	var str_length=str.length;
 	var str_length_end=str_length-1;
@@ -216,25 +228,35 @@ function isENchar(str,obj){
 			</div></td>
 			<td><div align="center">
 			
-			<input   value="<?php echo $_SESSION["firstnameTH"]." ".$_SESSION["lastnameTH"];?>"  type="text" id="name_student1" name="name_student1"   bg-White />
+			<input   value="<?php echo $Student1_data[4]." ".$Student1_data[5];?>"  type="text" id="name_student1" name="name_student1"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input   value="<?php echo $_SESSION["ID_USER"];?>"  type="text" id="ID_USER1" name="ID_USER1"   bg-White />
+			<input   value="<?php echo $Student1_data[8];?>"  type="text" id="ID_USER1" name="ID_USER1"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input   value="<?php echo $_SESSION["phone_number"];?>"  type="text" id="phone_number1" name="phone_number1"   bg-White />
+			<input   value="<?php echo $Student1_data[9];?>"  type="text" id="phone_number1" name="phone_number1"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input   value="<?php echo $_SESSION["email"];?>"  type="text" id="email1" name="email1"   bg-White />
+			<input   value="<?php echo $Student1_data[2];?>"  type="text" id="email1" name="email1"   bg-White />
 			
 			</div></td>
 			<td>
+			<?php 
+			if($project[3] != NULL)
+			{
+				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return delete1()\">DELETE</button>";
+			}
+			else
+			{
+				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return checkdata1()\">CHECK</button>";
+			}
+			?>
 			
 			</td>
 			
@@ -246,27 +268,36 @@ function isENchar(str,obj){
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="name_student2" name="name_student2"   bg-White />
+			<input  value="<?php echo $Student2_data[4]." ".$Student2_data[5];?>"  type="text" id="name_student2" name="name_student2"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="ID_USER2" name="ID_USER2"   bg-White />
+			<input  value="<?php echo $Student2_data[8];?>"  type="text" id="ID_USER2" name="ID_USER2"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="phone_number2" name="phone_number2"   bg-White />
+			<input  value="<?php echo $Student2_data[9];?>"  type="text" id="phone_number2" name="phone_number2"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="email2" name="email2"   bg-White />
+			<input  value="<?php echo $Student2_data[2];?>"  type="text" id="email2" name="email2"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
+			<?php 
+			if($project[4] != NULL)
+			{
+				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return delete2()\">DELETE</button>";
+			}
+			else
+			{
+				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return checkdata2()\">CHECK</button>";
+			}
+			?>
 			
-			<button bg-Red500 ripple-color="tealA400" onclick="return checkdata2()">CHECK</button>
 			
 			</div></td>
 			
@@ -278,27 +309,36 @@ function isENchar(str,obj){
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="name_student3" name="name_student3"   bg-White />
+			<input  value="<?php echo $Student3_data[4]." ".$Student3_data[5];?>"  type="text" id="name_student3" name="name_student3"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="ID_USER3" name="ID_USER3"   bg-White />
+			<input  value="<?php echo $Student3_data[8];?>"  type="text" id="ID_USER3" name="ID_USER3"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="phone_number3" name="phone_number3"   bg-White />
+			<input  value="<?php echo $Student3_data[9];?>"  type="text" id="phone_number3" name="phone_number3"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<input  value=""  type="text" id="email3" name="email3"   bg-White />
+			<input  value="<?php echo $Student3_data[2];?>"  type="text" id="email3" name="email3"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
 			
-			<button bg-Red500 ripple-color="tealA400" onclick="return checkdata3()">CHECK</button>
+			<?php 
+			if($project[5] != NULL)
+			{
+				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return delete3()\">DELETE</button>";
+			}
+			else
+			{
+				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return checkdata3()\">CHECK</button>";
+			}
+			?>
 			
 			</div></td>
 			
@@ -407,9 +447,112 @@ function isENchar(str,obj){
 		
  <script type="text/javascript"> 
 
- var click2 = false;
- var click3 = false;
- 
+ var click1 = <?php if($Student1_data[8] != NULL) {echo "true";} else{echo "false";}?>;
+ var click2 = <?php if($Student1_data[8] != NULL) {echo "true";} else{echo "false";}?>;
+ var click3 = <?php if($Student1_data[8] != NULL) {echo "true";} else{echo "false";}?>;
+  function   UPDATE_PROJECT()
+{
+var name_projectTH = document.forms["formdata"]["name_projectTH"].value;
+var name_projectEN = document.forms["formdata"]["name_projectEN"].value;
+var ID_USER1 = document.forms["formdata"]["ID_USER1"].value;
+var ID_USER2 = document.forms["formdata"]["ID_USER2"].value;
+var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
+
+	
+	$.getJSON('UPDATE_PROJECT.php?name_projectTH='+name_projectTH+"&name_projectEN="+name_projectEN+"&ID_USER1="+ID_USER1+"&ID_USER2="+ID_USER2+"&ID_USER3="+ID_USER3, function(jd1) {
+				
+				  
+               });
+				
+	window.location.replace("CPE01.php?ijoijo=jhbjo");			  
+     
+	return false;
+}
+
+ function   delete1()
+{
+		
+	$.getJSON('DeleteMember.php?idMember='+<?php if($Student1_data[0] != NULL){echo $Student1_data[0];}else {echo "000";}?>+"&number=1", function(jd1) {
+				
+				  
+               });
+				
+	window.location.replace("CPE01.php");			  
+     
+	return false;
+}
+ function   delete2()
+{
+		
+		$.getJSON('DeleteMember.php?idMember='+<?php if($Student2_data[0] != NULL){echo $Student2_data[0];}else {echo "000";}?>+"&number=2", function(jd1) {
+				
+				  
+               });
+	window.location.replace("CPE01.php");		
+	return false;
+}
+ function   delete3()
+{
+		
+		$.getJSON('DeleteMember.php?idMember='+<?php if($Student3_data[0] != NULL){echo $Student3_data[0];}else {echo "000";}?>+"&number=3", function(jd1) {
+				
+				  
+               });
+	window.location.replace("CPE01.php");		
+	return false;
+}
+
+function   checkdata1()
+{
+	var ID_USER1 = document.forms["formdata"]["ID_USER1"].value;
+	var ID_USER2 = document.forms["formdata"]["ID_USER2"].value;
+	var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
+	
+	if(ID_USER1 == "")
+	{
+		swal({title: "กรุณาป้อนรหัสนิสิต",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		//alert("กรุณาป้อนรหัสนิสิต ");
+	}
+	else
+	{
+		//
+		if(ID_USER1 == ID_USER2 || ID_USER1 == ID_USER3 )
+		{
+			swal({title: "รหัสนิสิตซ้ำซ้อน",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		}
+		else
+		{
+			$.getJSON('GetUser.php?id='+ID_USER1, function(jd) {
+				
+				if( jd.firstnameTH == null)
+				{
+				  document.forms["formdata"]["name_student1"].value = "";
+				  document.forms["formdata"]["ID_USER1"].value = "";
+				  document.forms["formdata"]["phone_number1"].value = "";
+				  document.forms["formdata"]["email1"].value = "";
+				  click1 = false;
+				  swal({title: "ไม่พบข้อมูล",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+				  //alert("ไม่พบข้อมูล ");
+				}
+				else
+				{
+				  swal("สำเร็จ", "เพิ่มเติมข้อมูลเรียบร้อย", "success");
+				  document.forms["formdata"]["name_student1"].value = jd.firstnameTH+" "+jd.lastnameTH;
+				  document.forms["formdata"]["ID_USER1"].value = jd.ID_USER;
+				  document.forms["formdata"]["phone_number1"].value = jd.phone_number;
+				  document.forms["formdata"]["email1"].value = jd.email;
+				  click1 = true;
+				}
+                  
+				  
+               });
+	
+		}
+			
+	
+	}
+	return false;
+}
 function   checkdata2()
 {
 	var ID_USER1 = document.forms["formdata"]["ID_USER1"].value;
@@ -424,7 +567,7 @@ function   checkdata2()
 	else
 	{
 		//
-		if(ID_USER1 == ID_USER2 || ID_USER1 == ID_USER3 || ID_USER2 == ID_USER3)
+		if(ID_USER2 == ID_USER1 || ID_USER2 == ID_USER3 )
 		{
 			swal({title: "รหัสนิสิตซ้ำซ้อน",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
 		}
@@ -469,13 +612,13 @@ function   checkdata3()
 	
 	if(ID_USER3 == "")
 	{
-		swal({title: "กรุณาป้อนรหัสนิสิต",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
-		//alert("กรุณาป้อนรหัสนิสิต ");
+		swal({title: "ERROR 005 \nกรุณาป้อนรหัสนิสิต",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		//alert("ERROR กรุณาป้อนรหัสนิสิต ");
 		
 	}
 	else
 	{
-		if(ID_USER1 == ID_USER2 || ID_USER1 == ID_USER3 || ID_USER2 == ID_USER3)
+		if(ID_USER3 == ID_USER1 || ID_USER3 == ID_USER2 )
 		{
 			swal({title: "รหัสนิสิตซ้ำซ้อน",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
 		}
@@ -539,20 +682,57 @@ else
 	}
 	else
 	{
+		var ID_USER1 = document.forms["formdata"]["ID_USER1"].value;
 		var ID_USER2 = document.forms["formdata"]["ID_USER2"].value;
 		var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
 		if(ID_USER2 == "")
 		{
 			if(ID_USER3 == "")
 			{
-				return true;
+				if(ID_USER1 == "")
+				{
+					return true;
+				}
+				else
+				{
+					if(click1 == true)
+					{
+					
+						return true;
+					}
+					else
+					{
+						swal({title: "กรุณากดค้นหานิสิตลำดับที่ 1",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		
+						//alert("กรุณากดค้นหานิสิตลำดับที่ 3");
+						return false;
+					}
+				}
 			}
 			else
 			{
 				if(click3 == true)
 				{
 					
-					return true;
+					if(ID_USER1 == "")
+					{
+						return true;
+					}
+					else
+					{
+						if(click1 == true)
+						{
+					
+							return true;
+						}
+						else
+						{
+							swal({title: "กรุณากดค้นหานิสิตลำดับที่ 1",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		
+							//alert("กรุณากดค้นหานิสิตลำดับที่ 3");
+							return false;
+						}
+					}
 				}
 				else
 				{
@@ -570,14 +750,50 @@ else
 			{
 				if(ID_USER3 == "")
 				{
-					return true;
+					if(ID_USER1 == "")
+					{
+						return true;
+					}
+					else
+					{
+						if(click1 == true)
+						{
+					
+							return true;
+						}
+						else
+						{
+							swal({title: "กรุณากดค้นหานิสิตลำดับที่ 1",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		
+							//alert("กรุณากดค้นหานิสิตลำดับที่ 3");
+							return false;
+						}
+					}
 				}
 				else
 				{
 					if(click3 == true)
 					{
 					
-						return true;
+						if(ID_USER1 == "")
+						{
+							return true;
+						}
+						else
+						{
+							if(click1 == true)
+							{
+					
+								return true;
+							}
+							else
+							{
+								swal({title: "กรุณากดค้นหานิสิตลำดับที่ 1",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+		
+								//alert("กรุณากดค้นหานิสิตลำดับที่ 3");
+								return false;
+							}
+						}
 					}
 					else
 					{
@@ -611,9 +827,15 @@ else
         
         <tr>
             <td>
-			
-				<button bg-Red500 ripple-color="tealA400" type="submit"> SAVE DATA</button>
-
+			<center>
+				<?php 
+				if($project[0] != NULL)
+				{
+					echo "<button bg-Green500 ripple-color=\"tealA400\" onclick=\"return UPDATE_PROJECT()\">UPDATE PROJECT</button>";
+				}
+				?>
+				<button bg-Red500 ripple-color="tealA400" type="submit"> NEW PROJECT</button>
+			</center>
             </td>
         </tr>
     </tfoot>
@@ -631,13 +853,15 @@ else
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
-		
-	
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
         
+		<div>
+		<font color="white"> Page ID : 6 CPE 01 </font>
+		</div>
 	</div>
 
 	

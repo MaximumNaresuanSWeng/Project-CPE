@@ -28,6 +28,10 @@
 		$query_Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[9]."'");
 		
 		$Committee = mysql_fetch_array($query_Committee);
+		
+		$query_Special_Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[10]."'");
+		
+		$Special_Committee = mysql_fetch_array($query_Special_Committee);
 			
 		}
 		else
@@ -108,13 +112,17 @@
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE01.php'\">CPE01</button>";
 				}
-				if($project[6] >= 2)
+				if($project[6] >=2)
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE02.php'\">CPE02</button>";
 				}
-				if($project[6] == 2)
+				if($project[6] >=4)
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE03.php'\">CPE03</button>";
+				}
+				if($project[6] >=6)
+				{
+					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE04.php'\">CPE04</button>";
 				}
 				}
 				
@@ -169,7 +177,11 @@
 				<h4>กรรมการ : <?php echo $Committee[4]." ".$Committee[5]; ?></h4>
 				<p></p>
 			</div>
-			
+			<br>
+			<div card="" z-1="" style="width: 500px">
+				<h4>กรรมการ : <?php echo $Special_Committee[4]." ".$Special_Committee[5]; ?></h4>
+				<p></p>
+			</div>
 		
 	
 		</div>
@@ -182,13 +194,15 @@
 	<div fluid card bg-Grey500="">
 
 		
-		<br>
-		<center><a1>เว็บไซต์นี้เป็นส่วนหนึ่งของ รายวิชา 305351 Computer System Engineering</a1></center>
-		<center><a1>อาจารย์ผู้สอน ดร.สุรเดช จิตประไพกุลศาล</a1></center>
-		<center><a1>2015 © Copyright nu.ac.th . All rights reserved.</a1></center>
+		<font color="white">
+		<center><a1>copyright © SuperStar Group | 305351 Computer System Engineering ภาคการศึกษาที่ 2  ปีการศึกษา 2557</a1></center>
+			<br>
+		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
+        </font>
 		
-	
-        
+		<div align=right>
+		<font color="white"> Page ID : 3 </font>
+		</div>
 	</div>
 
 	
