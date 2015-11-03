@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+
+<link rel="stylesheet" href="css/progress.css">
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+ 
+</head>
+<body  >
+ <script type="text/javascript"> 
+var i = 1;
+$('.progress .circle').removeClass().addClass('circle');
+$('.progress .bar').removeClass().addClass('bar');
+setInterval(function() {
+  $('.progress .circle:nth-of-type(' + i + ')').addClass('active');
+  
+  $('.progress .circle:nth-of-type(' + (i-1) + ')').removeClass('active').addClass('done');
+  
+  $('.progress .circle:nth-of-type(' + (i-1) + ') .label').html('&#10003;');
+  
+  $('.progress .bar:nth-of-type(' + (i-1) + ')').addClass('active');
+  
+  $('.progress .bar:nth-of-type(' + (i-2) + ')').removeClass('active').addClass('done');
+  
+  i++;
+  
+  if (i==0) {
+    $('.progress .bar').removeClass().addClass('bar');
+    $('.progress div.circle').removeClass().addClass('circle');
+    i = 1;
+  }
+}, 1000);
+ </script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<div class="progress">
+  <div class="circle done">
+    <span class="label">1</span>
+    <span class="title">CPE01</span>
+  </div>
+  <span class="bar done"></span>
+  <div class="circle done">
+    <span class="label">2</span>
+    <span class="title">CPE02</span>
+  </div>
+  <span class="bar half"></span>
+  <div class="circle active">
+    <span class="label">3</span>
+    <span class="title">CPE03</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label">4</span>
+    <span class="title">CPE04</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label">5</span>
+    <span class="title">CPE05</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label">5</span>
+    <span class="title">CPE06</span>
+  </div>
+  <span class="bar"></span>
+  <div class="circle">
+    <span class="label">5</span>
+    <span class="title">CPE07</span>
+  </div>
+</div>
+  </body>
+</html>

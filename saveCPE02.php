@@ -24,7 +24,7 @@
 		}
 		else
 		{
-			$Update_project = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '3' WHERE  `Project`.`id` = '".$_SESSION["ID_project"]."'");
+			//$Update_project = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '3' WHERE  `Project`.`id` = '".$_SESSION["ID_project"]."'");
 	
 			$insertCPE02 = mysql_query ("INSERT INTO `SWEN`.`CPE02` (`id`, `date`, `works`, `summary`, `Notes`, `ID_project`,`status`, `created_at`) 
 			VALUES (NULL, '".$date."', '".$works."', '".$summary."', '".$Notes."', '".$_SESSION["ID_project"]."','1', CURRENT_TIMESTAMP)");

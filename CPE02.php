@@ -102,13 +102,9 @@
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE02.php'\">CPE02</button>";
 				}
-				if($project[6] >= 4)
+				if($project[6] >= 2 && $project[6] < 4 && $project[10] !="")
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE03.php'\">CPE03</button>";
-				}
-				if($project[6] >= 6)
-				{
-					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE04.php'\">CPE04</button>";
 				}
 				}
 				

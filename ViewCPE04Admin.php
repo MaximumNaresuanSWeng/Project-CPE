@@ -7,9 +7,9 @@
 			mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD);
 			mysql_select_db(DB_NAME);
 			mysql_query("SET NAMES UTF8");
+		$ID = $_REQUEST['id'];
 	
-	
-		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
+		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$ID."'");
 		$project = mysql_fetch_array($query_project);
 		
 		$query_Student_USER1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
@@ -33,7 +33,7 @@
 		$Special_Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[10]."'");
 		$dataSpecial_Committee = mysql_fetch_array($Special_Committee);
 		
-		$query_CPE04 = mysql_query ("SELECT * FROM `CPE04` WHERE ID_project = '".$_SESSION["ID_project"]."'  ");
+		$query_CPE04 = mysql_query ("SELECT * FROM `CPE04` WHERE ID_project = '".$ID."'  ");
 		$dataquery_CPE04 = mysql_fetch_array($query_CPE04);
 		
 		}
@@ -82,7 +82,7 @@
 			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='load_balance.php'\">Data</button>";
 			if($_SESSION["status"] == "student")
 			{
-				echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='ViewCPE01.php'\">View</button>";
+				echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='ViewCPE01Admin.php'\">View</button>";
 			}
 			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='about.php'\">About</button>";
 			echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='logout.php'\">Log Out</button>";
@@ -138,7 +138,7 @@
 	<?php
 		if($project[6]>=1&&$project[6]<999)
 		{
-			echo "onclick=\"location.href='ViewCPE01.php?id=".$_SESSION["ID_project"]."'\"";
+			echo "onclick=\"location.href='ViewCPE01Admin.php?id=".$ID."'\"";
 		}	
 	?>>
 	<?php
@@ -199,7 +199,7 @@
   
   <!-------------------------------------------------------------------- CPE02 --------------------------------------------->
    <div class="<?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
@@ -239,16 +239,16 @@
 	?>">
     <span class="label" 
 	<?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
   {
-	  echo "onclick=\"location.href='ViewCPE02.php?id=".$ID."'\"";
+	  echo "onclick=\"location.href='ViewCPE02Admin.php?id=".$ID."'\"";
   }	
 	?>>
   <?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
@@ -290,7 +290,7 @@
     <span class="title">CPE02</span>
   </div>
   <span <?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
@@ -331,7 +331,7 @@
   
   <!-------------------------------------------------------------------- CPE03 --------------------------------------------->
   <div class="<?php
-  $query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$ID."'");
   $project_CPE03 = mysql_fetch_array($query_project_CPE03);
   if($project_CPE03)
   {
@@ -363,11 +363,11 @@
 	<?php
 		if($project[6]>=4)
 		{
-			echo "onclick=\"location.href='ViewCPE03.php?id=".$_SESSION["ID_project"]."'\"";
+			echo "onclick=\"location.href='ViewCPE03Admin.php?id=".$ID."'\"";
 		}	
 	?>>
 	<?php
-	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$ID."'");
    $project_CPE03 = mysql_fetch_array($query_project_CPE03);
    if($project_CPE03)
    {
@@ -400,7 +400,7 @@
     <span class="title">CPE03</span>
   </div>
   <span <?php
-	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$ID."'");
 	$project_CPE03 = mysql_fetch_array($query_project_CPE03);
 	if($project_CPE03)
 	{
@@ -462,7 +462,7 @@
 	<?php
 		if($project[6]>=5&&$project[6]<999)
 		{
-			echo "onclick=\"location.href='ViewCPE04.php?id=".$_SESSION["ID_project"]."'\"";
+			echo "onclick=\"location.href='ViewCPE04Admin.php?id=".$ID."'\"";
 		}	
 	?>>
 	<?php
@@ -548,36 +548,8 @@
 	
         </div>
 		
-		
-				<?php 
-				if($project[6] == 7)
-				{
-					echo "<br><div card=\"\" z-0=\"\" align-left><button bg-Red500 ripple-color=\"tealA400\" type=\"submit\" onclick=\"UPDATE_PROJECT()\"> SAVE EDIT</button></div>";
-				}
-					
-				?>
-<script type="text/javascript"> 
-
-
-  function   UPDATE_PROJECT()
-{
-
-	$.getJSON('UPDATE_STATUS_PROJECT.php', function(jd1) {
-				
-				  
-               });
-				
-	window.location.replace("ViewCPE04.php");			  
-     
-	return false;
-}
-
- </script>
-      
-  
-		
-		
 		<br>
+		
 		<div card="" z-0="" align-left>
 		
 	
@@ -751,72 +723,72 @@
 	
 		<tr ><td> 1. จำนวนนิสิตที่ทำโครงงาน</td>
 		<td>
-			<input type="radio" name="Number_of_students" id="Number_of_students1" <?php if($dataquery_CPE04[2] == "1"){echo " checked ";} ?>value="1">
+			<input type="radio" name="Number_of_students" id="Number_of_students1" <?php if($dataquery_CPE04[2] == 1){echo " checked ";} ?>value="1">
 			<label for="Number_of_students1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="Number_of_students" id="Number_of_students2" <?php if($dataquery_CPE04[2] == "0"){echo " checked ";} ?>value="0">
+			<input type="radio" name="Number_of_students" id="Number_of_students2" <?php if($dataquery_CPE04[2] == 0){echo " checked ";} ?>value="0">
 			<label for="Number_of_students2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>2. ที่มาและความสำคัญของปัญหา</td>
 		<td>
-			<input type="radio" name="importance" id="importance1" <?php if($dataquery_CPE04[3] == "1"){echo " checked ";} ?> value="1">
+			<input type="radio" name="importance" id="importance1" <?php if($dataquery_CPE04[3] == 1){echo " checked ";} ?> value="1">
 			<label for="importance1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="importance" id="importance2"  <?php if($dataquery_CPE04[3] == "0"){echo " checked ";} ?> value="0">
+			<input type="radio" name="importance" id="importance2"  <?php if($dataquery_CPE04[3] == 0){echo " checked ";} ?> value="0">
 			<label for="importance2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>3. วัตถุประสงค์ของโครงงาน</td>
 		<td>
-			<input type="radio" name="purpose" id="purpose1"  <?php if($dataquery_CPE04[4] == "1"){echo " checked ";} ?> value="1">
+			<input type="radio" name="purpose" id="purpose1"  <?php if($dataquery_CPE04[4] == 1){echo " checked ";} ?> value="1">
 			<label for="purpose1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="purpose" id="purpose2"  <?php if($dataquery_CPE04[4] == "0"){echo " checked ";} ?> value="0">
+			<input type="radio" name="purpose" id="purpose2"  <?php if($dataquery_CPE04[4] == 0){echo " checked ";} ?> value="0">
 			<label for="purpose2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>4. การศึกษาเกี่ยวกับหลักการและทฤษฎีที่เกี่ยวข้อง</td>
 		<td>
-			<input type="radio" name="theories" id="theories1"  <?php if($dataquery_CPE04[5] == "1"){echo " checked ";} ?> value="1">
+			<input type="radio" name="theories" id="theories1"  <?php if($dataquery_CPE04[5] == 1){echo " checked ";} ?> value="1">
 			<label for="theories1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="theories" id="theories2"  <?php if($dataquery_CPE04[5] == "0"){echo " checked ";} ?> value="0">
+			<input type="radio" name="theories" id="theories2"  <?php if($dataquery_CPE04[5] == 1){echo " checked ";} ?> value="0">
 			<label for="theories2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>5. ความเหมาะสมของวิธีการดำเนินงานที่นำเสนอ</td>
 		<td>
-			<input type="radio" name="Presentation" id="Presentation1"  <?php if($dataquery_CPE04[6] == "1"){echo " checked ";} ?> value="1">
+			<input type="radio" name="Presentation" id="Presentation1"  <?php if($dataquery_CPE04[6] == 1){echo " checked ";} ?> value="1">
 			<label for="Presentation1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="Presentation" id="Presentation2"  <?php if($dataquery_CPE04[6] == "0"){echo " checked ";} ?> value="0">
+			<input type="radio" name="Presentation" id="Presentation2"  <?php if($dataquery_CPE04[6] == 0){echo " checked ";} ?> value="0">
 			<label for="Presentation2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>6. ขอบเขตของโครงงาน</td>
 		<td>
-			<input type="radio" name="scope" id="scope1"  <?php if($dataquery_CPE04[7] == "1"){echo " checked ";} ?> value="1">
+			<input type="radio" name="scope" id="scope1"  <?php if($dataquery_CPE04[7] == 1){echo " checked ";} ?> value="1">
 			<label for="scope1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="scope" id="scope2"  <?php if($dataquery_CPE04[7] == "0"){echo " checked ";} ?> value="0">
+			<input type="radio" name="scope" id="scope2"  <?php if($dataquery_CPE04[7] == 0){echo " checked ";} ?> value="0">
 			<label for="scope2"></label>
 			
 		</td>
@@ -902,8 +874,6 @@
         </div>
 		
     </div>
-	
- 
 	
 	<div fluid card bg-Grey500="">
 

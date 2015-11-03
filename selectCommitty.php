@@ -15,7 +15,7 @@
 	
 	//$UpdateProject = mysql_query ("UPDATE  `SWEN`.`Project` SET  `Special_Committee` =  '".$Special_Committee."' WHERE  `Project`.`id` = '".$ID."'");
 	
-	$UpdateProject = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '4', `Special_Committee` =  '".$Special_Committee."' WHERE  `Project`.`id` = '".$ID."'");   
+	$UpdateProject = mysql_query ("UPDATE  `SWEN`.`Project` SET  `Special_Committee` =  '".$Special_Committee."' WHERE  `Project`.`id` = '".$ID."'");   
 	
 	header("location:load_balance.php");	
 	

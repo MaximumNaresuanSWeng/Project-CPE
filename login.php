@@ -123,7 +123,7 @@ var check_login = "<?php  $idMember = $_REQUEST['check']; echo $idMember;?>";
 		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
         </font>	
 		
-		<div>
+		<div align=right>
 		<font color="white"> Page ID : 3 </font>
 		</div>
         

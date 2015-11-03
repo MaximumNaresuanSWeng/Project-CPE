@@ -8,7 +8,7 @@
 			mysql_select_db(DB_NAME);
 			mysql_query("SET NAMES UTF8");
 		
-		$query_Project = mysql_query ("SELECT * FROM `Project` WHERE project_status < 7  AND Special_Committee = ''");
+		$query_Project = mysql_query ("SELECT * FROM `Project` WHERE project_status >= 2 ");
 		
 		
 		}
@@ -91,6 +91,9 @@
 			ชื่อโครงงาน
 			</div></td>
 			<td><div align="center">
+			สถานะเพิ่มกรรมการ
+			</div></td>
+			<td><div align="center">
 			อ่านเพิ่มเติม
 			</div></td>
         </tr>
@@ -100,6 +103,9 @@
 					$data = 0;
 					while($dataAdvisors = mysql_fetch_array($query_Project))
 					{$data++;
+						$query_CHECK = mysql_query ("SELECT * FROM `Project` WHERE id = '".$dataAdvisors[0]."' ");
+						$query_CHECK_Data = mysql_fetch_array($query_CHECK)
+					
 					?>
 					<tr>
 						<td style="width: 50px"><div align="center" >
@@ -109,7 +115,10 @@
 						<?php echo $dataAdvisors[1];?>
 						</div></td>
 						<td><div align="center">
-						<button bg-teal ripple-color="tealA400" onclick="location.href='ViewDetailProject.php?id=<?php echo $dataAdvisors[0];?>'">Read more</button>
+						<?php if($query_CHECK_Data[10] == ""){echo "ยังไม่เพิ่มกรรมการ";}else {echo "เพิ่มกรรมการแล้ว";}?>
+						</div></td>
+						<td><div align="center">
+						<button bg-teal ripple-color="tealA400" onclick="location.href='<?php if($query_CHECK_Data[10] == ""){echo "ViewDetailProject";}else {echo "ViewCPE01Admin";}?>.php?id=<?php echo $dataAdvisors[0];?>'">Read more</button>
 						</div></td>
 					</tr>
 					<?php

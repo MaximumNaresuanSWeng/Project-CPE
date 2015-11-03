@@ -6,29 +6,28 @@
 			if($_SESSION["status"] == "student")
 			{
 				header("location:load_balance.php");
+				
 			}
 			else
 			{
 				include_once dirname(__FILE__) . '/Config.php';
-			mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD);
-			mysql_select_db(DB_NAME);
-			mysql_query("SET NAMES UTF8");
-	
-	
-		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
-		$project = mysql_fetch_array($query_project);
+				mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD);
+				mysql_select_db(DB_NAME);
+				mysql_query("SET NAMES UTF8");
+				
+				$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
+				$project = mysql_fetch_array($query_project);
 		
-		$query_Student_USER1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
-		$Student_USER1 = mysql_fetch_array($query_Student_USER1);
+				$query_Student_USER1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
+				$Student_USER1 = mysql_fetch_array($query_Student_USER1);
 		
-		$query_Student_USER2 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[4]."'");
-		$Student_USER2 = mysql_fetch_array($query_Student_USER2);
+				$query_Student_USER2 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[4]."'");
+				$Student_USER2 = mysql_fetch_array($query_Student_USER2);
 		
-		$query_Student_USER3 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[5]."'");
-		$Student_USER3 = mysql_fetch_array($query_Student_USER3);
+				$query_Student_USER3 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[5]."'");
+				$Student_USER3 = mysql_fetch_array($query_Student_USER3);
 			}
-			
-			
+
 		}
 		else
 		{
@@ -71,7 +70,7 @@
 
 		<div card="" z-0="" >
 	<button bg-teal ripple-color="tealA400" onclick="location.href='index.php'">Home</button>
-	<button bg-teal ripple-color="tealA400" onclick="location.href='detail.php'">Detail</button>
+	<button bg-teal ripple-color="tealA400" onclick="location.href='index.php'">Detail</button>
 	<?php
 		session_start();
 		if (isset($_SESSION["login_state"]))
@@ -96,7 +95,7 @@
         
 		
     </div>
-      <div fluid card bg-Orange500="" align-center>
+	<div fluid card bg-Orange500="" align-center>
 	  
 	  
 		<div card="" z-0="" align-center>
@@ -104,19 +103,28 @@
 	
 	     <div bg-grey100="" padded="">
 		 
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='CPE01.php'">CPE01</button>
+				<?php 
+				if($project[6] == 999)
+				{
+					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE01.php'\">CPE01</button>";
+				}
+				else
+				{
+				if($project[6] >= 1 || $project == NULL)
+				{
+					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE01.php'\">CPE01</button>";
+				}
+				if($project[6] >= 2)
+				{
+					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE02.php'\">CPE02</button>";
+				}
+				if($project[6] >= 4)
+				{
+					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE03.php'\">CPE03</button>";
+				}
+				}
 				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='CPE02.php'">CPE02</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='CPE03.php'">CPE03</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='CPE04.php'">CPE04</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='CPE05.php'">CPE05</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='CPE06.php'">CPE06</button>
-				
-				<button bg-Red500 ripple-color="tealA400" onclick="location.href='CPE07.php'">CPE07</button>
+			?>
 				
 				
 		</div>
@@ -127,10 +135,7 @@
 		<br>
 		
 		<div card="" z-0="" align-left>
-		
-	
-	     
-		 
+ 
 			<h4>โครงงาน</h4>
 			
 			<table id="myTable1" class="order-list" style="width: 700px">
@@ -357,49 +362,78 @@
       <tr >
         <th><center>หัวข้อ</center></th>
         <th><center>ผ่าน</center></th>
+		<th><center>สมควรแก้ไข</center></th>
 		<th><center>ไม่ผ่าน</center></th>
 		<th><center> </center></th>
 		
       </tr>
     </thead>
 	<tbody>
+	<!--ส่วนสรุป-->
+	<tr><td>ความเห็นของอาจารย์ผู้ประเมิน</td>
+	<td align="center">
+		<input type="radio" name="opinion_teacher" id="opinion_past1" value="11" >
+		<label for="opinion_past1"></label></td>
+	<td>
+		<input type="radio" name="opinion_teacher" id="opinion_re-examine1" value="12" >
+		<label for="opinion_re-examine1"></label>
+		<br>
+		<input type="radio" name="opinion_teacher"  id="opinion_non-exams1" value="13" >
+		<label for="opinion_non-exams1"></label></td>
+	<td>
+		<input type="radio" name="opinion_teacher" id="opinion_fail1" value="10" >
+		<label for="opinion_fail1"></label></td>
+	</tr>
 	
-		<tr ><td>ความเห็นของอาจารย์ผู้ประเมิน</td><td>
+	<tr><td>มติกรรมการ</td>
+	<td align="center">
+		<input type="radio" name="board_resolution" id="board_past2" value="21" >
+		<label for="board_past2"></label></td>
+	<td>
+		<input type="radio" name="board_resolution" id="board_re-examine2" value="22" >
+		<label for="board_re-examine2"></label>
+		<br>
+		<input type="radio" name="board_resolution"  id="board_non-exams2" value="23" >
+		<label for="board_non-exams2"></label></td>
+	<td>
+		<input type="radio" name="board_resolution" id="board_fail2" value="20" >
+		<label for="board_fail2"></label></td>
+	</tr>
+	
+	
+	<!--	<tr ><td>ความเห็นของอาจารย์ผู้ประเมิน</td><td>
 		<input type="radio" name="opinion_teacher" id="opinion_teacher1" value="0" onclick="CHECK()">
 			<label for="opinion_teacher1"></label>
 		</td><td>
+		<input type="radio" name="opinion_teacherNEW" id="opinion_teacherNEW2" value="21" onclick="sub_CHECK()">
+		<label for="opinion_teacherNEW2">สอบใหม่</label><br>
+		<input type="radio" name="opinion_teacherNEW" id="opinion_teacherNEW3" value="22" onclick="sub_CHECK()">
+		<label for="opinion_teacherNEW3">ไม่ต้องสอบใหม่</label>
+		</td><td>
 		<input type="radio" name="opinion_teacher" id="opinion_teacher2" value="1" onclick="CHECK()">
 			<label for="opinion_teacher2"></label>
-		</td><td>
-		<input type="radio" name="opinion_teacherNEW" id="opinion_teacherNEW1" value="1" onclick="sub_CHECK()">
-		<label for="opinion_teacherNEW1">สมควรแก้ไข</label><br>
-		<input type="radio" name="opinion_teacherNEW" id="opinion_teacherNEW2" value="2" onclick="sub_CHECK()">
-		<label for="opinion_teacherNEW2">สอบใหม่</label><br>
-		<input type="radio" name="opinion_teacherNEW" id="opinion_teacherNEW3" value="3" onclick="sub_CHECK()">
-		<label for="opinion_teacherNEW3">ไม่ต้องสอบใหม่</label>
 		</td></tr>
 		
 		<tr ><td>มติกรรมการ</td><td>
 		<input type="radio" name="board_resolution" id="board_resolution1" value="0" onclick="CHECK2()">
 			<label for="board_resolution1"></label>
 		</td><td>
+		<input type="radio" name="board_resolutionNEW" id="board_resolutionNEW2" value="21" onclick="sub_CHECK2()">
+		<label for="board_resolutionNEW2">สอบใหม่</label><br>
+		<input type="radio" name="board_resolutionNEW" id="board_resolutionNEW3" value="22" onclick="sub_CHECK2()">
+		<label for="board_resolutionNEW3">ไม่ต้องสอบใหม่</label>
+		</td><td>
 		<input type="radio" name="board_resolution" id="board_resolution2" value="1" onclick="CHECK2()">
 			<label for="board_resolution2"></label>
-		</td><td>
-		<input type="radio" name="board_resolutionNEW" id="board_resolutionNEW1" value="1" onclick="sub_CHECK2()">
-		<label for="board_resolutionNEW1">สมควรแก้ไข</label><br>
-		<input type="radio" name="board_resolutionNEW" id="board_resolutionNEW2" value="2" onclick="sub_CHECK2()">
-		<label for="board_resolutionNEW2">สอบใหม่</label><br>
-		<input type="radio" name="board_resolutionNEW" id="board_resolutionNEW3" value="3" onclick="sub_CHECK2()">
-		<label for="board_resolutionNEW3">ไม่ต้องสอบใหม่</label>
-		</td></tr>
+		</td></tr>   
 		
-		
+		-->
 		
 	 </tbody>
 	 </table >
 			<br>
 			
+			<form name="formdata" id="formdata" onsubmit="return required()" method="post" action="saveCPE04.php" >
 			
 			<button bg-Red500 ripple-color="tealA400" type="submit"> SAVE DATA</button>
 			
@@ -408,11 +442,10 @@
 			
 <script type="text/javascript"> 
 
-function CHECK()
+/*function CHECK()
 {
 if(document.getElementById('opinion_teacher1').checked) {
 	
-	document.getElementById("opinion_teacherNEW1").checked = false;
 	document.getElementById("opinion_teacherNEW2").checked = false;
 	document.getElementById("opinion_teacherNEW3").checked = false;
 	
@@ -423,7 +456,6 @@ function CHECK2()
 {
 if(document.getElementById('board_resolution1').checked) {
 	
-	document.getElementById("board_resolutionNEW1").checked = false;
 	document.getElementById("board_resolutionNEW2").checked = false;
 	document.getElementById("board_resolutionNEW3").checked = false;
 	
@@ -440,7 +472,7 @@ function sub_CHECK2()
 {
 	document.getElementById("board_resolution1").checked = false;
 	document.getElementById("board_resolution2").checked = true;
-}
+}*/
 
  function required()
 {

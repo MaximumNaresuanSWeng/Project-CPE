@@ -37,6 +37,8 @@
 		
 		$query_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project = '".$_SESSION["ID_project"]."'  ");
 		$dataquery_CPE03 = mysql_fetch_array($query_CPE03);
+		
+		
 		}
 		else
 		{
@@ -60,6 +62,7 @@
 <link rel="stylesheet" href="css/md-icons.min.css">
 <link rel="stylesheet" href="css/dropdown2.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 <link rel="stylesheet" href="css/progress.css">
 
 </head>
@@ -116,10 +119,18 @@
 			echo "circle active";
 			
 		}
-		else if($project[6]>=2)
+		else if($project[6]>=2&&$project[6]<999&&$project[10]=="")
 		{
 			echo "circle done";
 			
+		}
+		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
+		{
+			echo "circle done";			
+		}
+		else if($project[6]==999)
+		{
+			echo "circle fail ";			
 		}
 		else
 		{
@@ -140,10 +151,18 @@
 			echo "✔";
 			
 		}
-		else if($project[6]>=2)
+		else if($project[6]>=2&&$project[6]<999&&$project[10]=="")
 		{
-			echo "✔";
+			echo " ";
 			
+		}
+		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
+		{
+			echo "✔";		
+		}
+		else if($project[6]==999)
+		{
+			echo " ";			
 		}
 		else
 		{
@@ -160,10 +179,18 @@
 			echo"class=\"bar active\"";
 			
 		}
-		else if($project[6]>=2)
+		else if($project[6]>=2&&$project[6]<999&&$project[10]=="")
 		{
 			echo"class=\"bar done\"";
 			
+		}
+		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
+		{
+			echo"class=\"bar done\"";		
+		}
+		else if($project[6]==999)
+		{
+			echo"class=\"bar\"";			
 		}
 		else
 		{
@@ -174,90 +201,271 @@
   </span>
   
   <!---------------------------------------------------------- CPE02 ----------------------------------------------------->
-  <div class="<?php
-		if($project[6]==3)
-		{
-			echo "circle active";
-			
-		}
-		else if($project[6]>=4)
-		{
-			echo "circle done";
-			
-		}
-		else
-		{
-			echo "circle";			
-		}
+ <div class="<?php
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $project_CPE02 = mysql_fetch_array($query_project_CPE02);
+  $sum = true;
+  if($project_CPE02)
+  {
+	  
+	  
+	  if($project_CPE02[5] == 1)
+	  {
+		  $sum = false;
+	  }
+	  else
+	  {
+		  while($project_CPE02 = mysql_fetch_array($query_project_CPE02))
+			{
+				if($project_CPE02[5] == 1)
+				{
+					$sum = false;
+					break;
+				}
+			}
+	  }
+	  
+	  if($sum == true)
+	  {
+		 echo "circle done";		
+	  }
+	  else
+	  {
+		 echo "circle active";
+	  }
+  }
+  else
+  {
+	  echo "circle";
+  }
+		
 	?>">
     <span class="label" 
 	<?php
-		if($project[6]>=3)
-		{
-			echo "onclick=\"location.href='ViewCPE02.php?id=".$ID."'\"";
-		}	
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $project_CPE02 = mysql_fetch_array($query_project_CPE02);
+  $sum = true;
+  if($project_CPE02)
+  {
+	  echo "onclick=\"location.href='ViewCPE02.php?id=".$ID."'\"";
+  }	
 	?>>
-		<?php
-		if($project[6]==3)
-		{
-			echo "✔";
-			
-		}
-		else if($project[6]>=4)
-		{
-			echo "✔";
-			
-		}
-		else
-		{
-			echo "✖";			
-		}
+  <?php
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $project_CPE02 = mysql_fetch_array($query_project_CPE02);
+  $sum = true;
+  if($project_CPE02)
+  {
+	  
+	  
+	  if($project_CPE02[5] == 1)
+	  {
+		  $sum = false;
+	  }
+	  else
+	  {
+		  while($project_CPE02 = mysql_fetch_array($query_project_CPE02))
+			{
+				if($project_CPE02[5] == 1)
+				{
+					$sum = false;
+					break;
+				}
+			}
+	  }
+	  
+	  if($sum == true)
+	  {
+		 echo "✔";		
+	  }
+	  else
+	  {
+		 echo "✔";
+	  }
+  }
+  else
+  {
+	  echo "✖";
+  }
+		
 	?>
 	</span>
     <span class="title">CPE02</span>
   </div>
   <span <?php
-		if($project[6]==3)
-		{
-			echo"class=\"bar active \"";
-			
-		}
-		else if($project[6]>=4)
-		{
-			echo"class=\"bar done \"";
-			
-		}
-		else
-		{
-			echo"class=\"bar \"";
-			
-		}
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $project_CPE02 = mysql_fetch_array($query_project_CPE02);
+  $sum = true;
+  if($project_CPE02)
+  {
+	  
+	  
+	  if($project_CPE02[5] == 1)
+	  {
+		  $sum = false;
+	  }
+	  else
+	  {
+		  while($project_CPE02 = mysql_fetch_array($query_project_CPE02))
+			{
+				if($project_CPE02[5] == 1)
+				{
+					$sum = false;
+					break;
+				}
+			}
+	  }
+	  
+	  if($sum == true)
+	  {
+		 echo"class=\"bar done \"";		
+	  }
+	  else
+	  {
+		 echo"class=\"bar active \"";
+	  }
+  }
+  else
+  {
+	  echo"class=\"bar \"";
+  }		
 	?>>  
   </span>
   
   <!------------------------------------------------------------- CPE03 ----------------------------------------------->
   <div class="<?php
+  $query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+  $project_CPE03 = mysql_fetch_array($query_project_CPE03);
+  if($project_CPE03)
+  {
+		if((($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="") ))
+		{
+			echo "circle active";
+			
+		}
+		
+		else if((($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] !="") ))
+		{
+			echo "circle done";			
+		}
+		else if((($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] !="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] !="") ))
+		{
+			echo "circle done";			
+		}
+		else if(($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] !=""))
+		{
+			echo "circle done";			
+		}
+  }
+		else
+		{
+			echo "circle";			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=4)
+		{
+			echo "onclick=\"location.href='ViewCPE03.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+   $project_CPE03 = mysql_fetch_array($query_project_CPE03);
+   if($project_CPE03)
+   {
+		if((($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="") ))
+		{
+			echo "✔";
+			
+		}
+		else if((($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] !="") ))
+		{
+			echo "1";			
+		}
+		else if((($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] !="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] !="") ))
+		{
+			echo "2";			
+		}
+		else if(($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] !=""))
+		{
+			echo "✔";			
+		}
+   }
+		
+	else
+	{
+		echo "✖";
+			
+	}
+	?>
+	</span>
+    <span class="title">CPE03</span>
+  </div>
+  <span <?php
+	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+	$project_CPE03 = mysql_fetch_array($query_project_CPE03);
+	if($project_CPE03)
+	{
+		if((($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] =="") ))
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if((($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] !="") ))
+		{
+			echo"class=\"bar active\"";			
+		}
+		else if((($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] !="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] !="") ))
+		{
+			echo"class=\"bar active\"";		
+		}
+		else if(($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] !=""))
+		{
+			echo"class=\"bar done\"";		
+		}
+	}
+	else
+	{
+		echo"class=\"bar\"";
+			
+	}
+	?>>	
+  </span>
+
+ <!--------------------------------------------------------- CPE04 -------------------------------------------------------------------> 
+ <div class="<?php
 		if($project[6]==5)
 		{
 			echo "circle active";
 			
 		}
-		else if($project[6]>=6)
+		else if($project[6]==6)	
+		{
+			echo "circle fail";
+		}
+		else if($project[6]==7)	
+		{
+			echo "circle active";
+		}	
+		else if($project[6]==8)	
+		{
+			echo "circle active";
+		}	
+		else if($project[6]==9)	
 		{
 			echo "circle done";
-			
-		}
+		}	
 		else
 		{
-			echo "circle";
-			
+			echo "circle";			
 		}
 		?>">
     <span class="label" 
 	<?php
-		if($project[6]>=5)
+		if($project[6]>=5&&$project[6]<999)
 		{
-			echo "onclick=\"location.href='ViewCPE03.php?id=".$ID."'\"";
+			echo "onclick=\"location.href='ViewCPE04.php?id=".$ID."'\"";
 		}	
 	?>>
 	<?php
@@ -266,11 +474,22 @@
 			echo "✔";
 			
 		}
-		else if($project[6]>=6)
+		else if($project[6]==6)	
+		{
+			echo "✖";
+		}
+		else if($project[6]==7)	
+		{
+			echo "&#9998;";
+		}	
+		else if($project[6]==8)	
+		{
+			echo "&#8634;";
+		}	
+		else if($project[6]==9)	
 		{
 			echo "✔";
-			
-		}
+		}			
 		else
 		{
 			echo "✖";
@@ -278,7 +497,7 @@
 		}
 	?>
 	</span>
-    <span class="title">CPE03</span>
+    <span class="title">CPE04</span>
   </div>
   <span <?php
 		if($project[6]==5)
@@ -286,25 +505,31 @@
 			echo"class=\"bar active\"";
 			
 		}
-		else if($project[6]>=6)
+		else if($project[6]==6)	
+		{
+			echo"class=\"bar \"";
+		}
+		else if($project[6]==7)	
+		{
+			echo"class=\"bar active\"";
+		}	
+		else if($project[6]==8)	
+		{
+			echo"class=\"bar active\"";
+		}	
+		else if($project[6]==9)	
 		{
 			echo"class=\"bar done\"";
-			
-		}
+		}	
 		else
 		{
 			echo"class=\"bar\"";
 			
 		}
 	?>>	
-  </span>
+  </span>   
   
-  
-  <div class="circle">
-    <span class="label" >✖</span>
-    <span class="title">CPE04</span>
-  </div>
-  <span class="bar"></span>
+
   <div class="circle">
     <span class="label" >✖</span>
     <span class="title">CPE05</span>
@@ -459,11 +684,122 @@
 			<hr>
 			<h4>ประเด็นปัญหาและขอบเขตของโครงงานโดยย่อ</font></h4>
 			
-			<textarea placeholder="ประเด็นปัญหาและขอบเขตของโครงงานโดยย่อ" name="works" id="works"  bg-White style="width: 700px" rows="6"><?php echo $dataquery_CPE03[1] ?></textarea>
+			<textarea placeholder="ประเด็นปัญหาและขอบเขตของโครงงานโดยย่อ" name="works" id="works"  bg-White style="width: 700px" rows="6"><?php echo $dataquery_CPE03[1]; ?></textarea>
 			
 			<br>
 			
+			<h4>การดำเนินงานของอาจารย์ที่ปรึกษาและกรรมการ</h4>
+			<table id="myTable2" class="order-list" style="width: 700px">
+    <thead>
+        <tr>
+           <td style="width: 50px"><div align="center" >
+			อาจารย์ที่ปรึกษา
+			</div></td>
+			<td><div align="center">
+			อาจารย์ที่ปรึกษาร่วม    
+			</div></td>
+			<td><div align="center">
+			กรรมการ
+			</div></td>
+			<td><div align="center">
+			กรรมการ
+			</div></td>
 			
+			
+        </tr>
+    </thead>
+    <tbody>
+	
+		<tr>
+			<td>
+			<div align="center">
+			 <?php echo $dataAdvisors[4]." ".$dataAdvisors[5];?>
+			 </div>
+			</td>
+			
+			<td>
+			<div align="center">
+			<?php echo $dataCo_Advisors[4]." ".$dataCo_Advisors[5];?>
+			</div>
+			</td>
+			
+			<td>
+			<div align="center">
+			<?php echo $dataCommittee[4]." ".$dataCommittee[5];?>
+			</div>
+		
+			</td>
+		
+			<td>
+			<div align="center">
+			<?php echo $dataSpecial_Committee[4]." ".$dataSpecial_Committee[5];?>
+			</div>
+		
+			</td>
+			
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div align="center">
+			<?php 
+				if($dataquery_CPE03[2] == 1)
+				{
+					echo "ยืนยันแล้ว";
+				}
+				else
+				{
+					echo "ยังไม่ยืนยัน";
+				}
+				
+			?>
+			
+			 </div>
+			</td>
+			
+			<td>
+			<div align="center">
+			<?php 
+				if($dataquery_CPE03[3] == 1)
+				{
+					echo "ยืนยันแล้ว";
+				}
+				else
+				{
+					echo "ยังไม่ยืนยัน";
+				}
+				
+			?>
+			</div>
+		
+			</td>
+		
+			<td>
+			<div align="center">
+			<?php 
+				if($dataquery_CPE03[4] == 1)
+				{
+					echo "ยืนยันแล้ว";
+				}
+				else
+				{
+					echo "ยังไม่ยืนยัน";
+				}
+				
+			?>
+			</div>
+		
+			</td>
+			
+		</tr>
+		
+    
+    </tbody>
+    <tfoot>
+      
+    </tfoot>
+</table>
+
+
         </div>
 		
     </div>

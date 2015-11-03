@@ -7,9 +7,9 @@
 			mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD);
 			mysql_select_db(DB_NAME);
 			mysql_query("SET NAMES UTF8");
+		$ID = $_REQUEST['id'];
 	
-	
-		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
+		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$ID."'");
 		$project = mysql_fetch_array($query_project);
 		
 		$query_Student_USER1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
@@ -33,8 +33,11 @@
 		$Special_Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[10]."'");
 		$dataSpecial_Committee = mysql_fetch_array($Special_Committee);
 		
-		$query_CPE04 = mysql_query ("SELECT * FROM `CPE04` WHERE ID_project = '".$_SESSION["ID_project"]."'  ");
-		$dataquery_CPE04 = mysql_fetch_array($query_CPE04);
+		$query_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."' AND status = '2' ");
+		
+		$query_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project = '".$ID."'  ");
+		$dataquery_CPE03 = mysql_fetch_array($query_CPE03);
+		
 		
 		}
 		else
@@ -61,6 +64,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <link rel="stylesheet" href="css/progress.css">
+
 </head>
 <body material fluid >
 
@@ -82,7 +86,7 @@
 			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='load_balance.php'\">Data</button>";
 			if($_SESSION["status"] == "student")
 			{
-				echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='ViewCPE01.php'\">View</button>";
+				echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='ViewCPE01Admin.php'\">View</button>";
 			}
 			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='about.php'\">About</button>";
 			echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='logout.php'\">Log Out</button>";
@@ -108,7 +112,7 @@
 	     <div bg-grey100="" padded="">
 		 
   <div class="progress">
-  <!-------------------------------------------------------------------- CPE01 --------------------------------------------->
+  <!-------------------------------------------------- CPE01 ----------------------------------------------->
   <div class="<?php
 		if($project[6]==1)
 		{
@@ -122,23 +126,23 @@
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
 		{
-			echo "circle done";
-			
+			echo "circle done";			
 		}
 		else if($project[6]==999)
 		{
-			echo "circle fail";			
+			echo "circle fail ";			
 		}
 		else
 		{
-			echo "circle";			
+			echo "circle";
+			
 		}
 		?>">
     <span class="label" 
 	<?php
-		if($project[6]>=1&&$project[6]<999)
+		if($project[6]>=1)
 		{
-			echo "onclick=\"location.href='ViewCPE01.php?id=".$_SESSION["ID_project"]."'\"";
+			echo "onclick=\"location.href='ViewCPE01Admin.php?id=".$ID."'\"";
 		}	
 	?>>
 	<?php
@@ -149,16 +153,16 @@
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]=="")
 		{
-			echo " ";			
+			echo " ";
+			
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
 		{
-			echo "✔";			
+			echo "✔";		
 		}
 		else if($project[6]==999)
 		{
-			echo "✖";
-			
+			echo " ";			
 		}
 		else
 		{
@@ -182,12 +186,11 @@
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
 		{
-			echo"class=\"bar done\"";			
+			echo"class=\"bar done\"";		
 		}
 		else if($project[6]==999)
 		{
-			echo"class=\"bar\"";
-			
+			echo"class=\"bar\"";			
 		}
 		else
 		{
@@ -197,9 +200,9 @@
 	?>>	
   </span>
   
-  <!-------------------------------------------------------------------- CPE02 --------------------------------------------->
-   <div class="<?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  <!---------------------------------------------------------- CPE02 ----------------------------------------------------->
+ <div class="<?php
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
@@ -239,16 +242,16 @@
 	?>">
     <span class="label" 
 	<?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
   {
-	  echo "onclick=\"location.href='ViewCPE02.php?id=".$ID."'\"";
+	  echo "onclick=\"location.href='ViewCPE02Admin.php?id=".$ID."'\"";
   }	
 	?>>
   <?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
@@ -290,7 +293,7 @@
     <span class="title">CPE02</span>
   </div>
   <span <?php
-  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE02 = mysql_query ("SELECT * FROM `CPE02` WHERE ID_project = '".$ID."'");
   $project_CPE02 = mysql_fetch_array($query_project_CPE02);
   $sum = true;
   if($project_CPE02)
@@ -329,9 +332,9 @@
 	?>>  
   </span>
   
-  <!-------------------------------------------------------------------- CPE03 --------------------------------------------->
+  <!------------------------------------------------------------- CPE03 ----------------------------------------------->
   <div class="<?php
-  $query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+  $query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$ID."'");
   $project_CPE03 = mysql_fetch_array($query_project_CPE03);
   if($project_CPE03)
   {
@@ -354,20 +357,20 @@
 			echo "circle done";			
 		}
   }
-  else
-  {
-	echo "circle";			
-  }
+		else
+		{
+			echo "circle";			
+		}
 		?>">
     <span class="label" 
 	<?php
 		if($project[6]>=4)
 		{
-			echo "onclick=\"location.href='ViewCPE03.php?id=".$_SESSION["ID_project"]."'\"";
+			echo "onclick=\"location.href='ViewCPE03Admin.php?id=".$ID."'\"";
 		}	
 	?>>
 	<?php
-	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$ID."'");
    $project_CPE03 = mysql_fetch_array($query_project_CPE03);
    if($project_CPE03)
    {
@@ -394,13 +397,13 @@
 	{
 		echo "✖";
 			
-    }
+	}
 	?>
 	</span>
     <span class="title">CPE03</span>
   </div>
   <span <?php
-	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$_SESSION["ID_project"]."'");
+	$query_project_CPE03 = mysql_query ("SELECT * FROM `CPE03` WHERE ID_project  = '".$ID."'");
 	$project_CPE03 = mysql_fetch_array($query_project_CPE03);
 	if($project_CPE03)
 	{
@@ -429,9 +432,9 @@
 	}
 	?>>	
   </span>
-  
- <!-------------------------------------------------------------------- CPE04 --------------------------------------------->
-<div class="<?php
+
+ <!--------------------------------------------------------- CPE04 -------------------------------------------------------------------> 
+ <div class="<?php
 		if($project[6]==5)
 		{
 			echo "circle active";
@@ -462,7 +465,7 @@
 	<?php
 		if($project[6]>=5&&$project[6]<999)
 		{
-			echo "onclick=\"location.href='ViewCPE04.php?id=".$_SESSION["ID_project"]."'\"";
+			echo "onclick=\"location.href='ViewCPE04Admin.php?id=".$ID."'\"";
 		}	
 	?>>
 	<?php
@@ -524,7 +527,7 @@
 			
 		}
 	?>>	
-  </span> 
+  </span>   
   
 
   <div class="circle">
@@ -548,52 +551,55 @@
 	
         </div>
 		
-		
-				<?php 
-				if($project[6] == 7)
-				{
-					echo "<br><div card=\"\" z-0=\"\" align-left><button bg-Red500 ripple-color=\"tealA400\" type=\"submit\" onclick=\"UPDATE_PROJECT()\"> SAVE EDIT</button></div>";
-				}
-					
-				?>
-<script type="text/javascript"> 
-
-
-  function   UPDATE_PROJECT()
-{
-
-	$.getJSON('UPDATE_STATUS_PROJECT.php', function(jd1) {
-				
-				  
-               });
-				
-	window.location.replace("ViewCPE04.php");			  
-     
-	return false;
-}
-
- </script>
-      
-  
-		
-		
 		<br>
+		
 		<div card="" z-0="" align-left>
 		
 	
 	     
 		 
-			<h4>ชื่อโครงงาน</h4>
-			
-				ภาษาไทย&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<?php echo $project[1];?>
-			<br>
-				ภาษาอังกฤษ&nbsp;&nbsp;
-				<?php echo $project[2];?>
-			<br>
-			<h4>รายชื่อนิสิตผู้ทำโครงงาน</h4>
+			<h4>โครงงาน</h4>
 			
 			<table id="myTable1" class="order-list" style="width: 700px">
+    <thead>
+        <tr>
+           <td style="width: 150px"><div align="center" >
+			รหัสโครงงาน
+			</div></td>
+			<td><div align="center">
+			ชื่อภาษาไทย
+			</div></td>
+			<td><div align="center">
+			ชื่อภาษาอังกฤษ
+			</div></td>
+			
+			
+        </tr>
+    </thead>
+    <tbody>
+	<tr>
+           <td style="width: 150px"><div align="center" >
+			<?php echo " ".$project[0];?>
+			</div></td>
+			<td><div align="center">
+			<?php echo " ".$project[1];?>
+			</div></td>
+			<td><div align="center">
+			<?php echo " ".$project[2];?>
+			</div></td>
+			
+			
+        </tr>
+		
+    </tbody>
+    <tfoot>
+       
+    </tfoot>
+</table>
+<hr>
+<h4>รายชื่อนิสิตผู้ทำโครงงาน</h4>
+			
+			<table id="myTable2" class="order-list" style="width: 700px">
     <thead>
         <tr>
            <td style="width: 50px"><div align="center" >
@@ -609,15 +615,13 @@
 			เบอร์โทร
 			</div></td>
 			<td><div align="center">
-			E-mail
+			อีเมล์
 			</div></td>
 			
 			
         </tr>
     </thead>
     <tbody>
-	
-	
 		<tr>
            <td style="width: 50px"><div align="center" >
 			1
@@ -670,17 +674,21 @@
 			</div></td>
         </tr>
 		
+					
 		
     </tbody>
     <tfoot>
-        
-        
+       
     </tfoot>
 </table>
-
-
-			<h4>อาจารย์ที่ปรึกษาและกรรมการ</h4>
+			<hr>
+			<h4>ประเด็นปัญหาและขอบเขตของโครงงานโดยย่อ</font></h4>
 			
+			<textarea placeholder="ประเด็นปัญหาและขอบเขตของโครงงานโดยย่อ" name="works" id="works"  bg-White style="width: 700px" rows="6"><?php echo $dataquery_CPE03[1]; ?></textarea>
+			
+			<br>
+			
+			<h4>การดำเนินงานของอาจารย์ที่ปรึกษาและกรรมการ</h4>
 			<table id="myTable2" class="order-list" style="width: 700px">
     <thead>
         <tr>
@@ -719,14 +727,69 @@
 			<div align="center">
 			<?php echo $dataCommittee[4]." ".$dataCommittee[5];?>
 			</div>
+		
 			</td>
-			
+		
 			<td>
 			<div align="center">
 			<?php echo $dataSpecial_Committee[4]." ".$dataSpecial_Committee[5];?>
 			</div>
+		
+			</td>
+			
+		</tr>
+		<tr>
+			<td colspan="2">
+			<div align="center">
+			<?php 
+				if($dataquery_CPE03[2] == 1)
+				{
+					echo "ยืนยันแล้ว";
+				}
+				else
+				{
+					echo "ยังไม่ยืนยัน";
+				}
+				
+			?>
+			
+			 </div>
+			</td>
+			
+			<td>
+			<div align="center">
+			<?php 
+				if($dataquery_CPE03[3] == 1)
+				{
+					echo "ยืนยันแล้ว";
+				}
+				else
+				{
+					echo "ยังไม่ยืนยัน";
+				}
+				
+			?>
+			</div>
+		
 			</td>
 		
+			<td>
+			<div align="center">
+			<?php 
+				if($dataquery_CPE03[4] == 1)
+				{
+					echo "ยืนยันแล้ว";
+				}
+				else
+				{
+					echo "ยังไม่ยืนยัน";
+				}
+				
+			?>
+			</div>
+		
+			</td>
+			
 		</tr>
 		
     
@@ -736,174 +799,10 @@
     </tfoot>
 </table>
 
-		<hr>
-			
-			<h4>ผลการประเมิน</h4>
-			<table id="myTable3" class="order-list" style="width: 700px">
-	<thead>
-      <tr >
-        <td>หัวข้อการประเมิน</td>
-        <td>เหมาะสม</td>
-		<td>ไม่เหมาะสม</td>
-      </tr>
-    </thead>
-	<tbody>
-	
-		<tr ><td> 1. จำนวนนิสิตที่ทำโครงงาน</td>
-		<td>
-			<input type="radio" name="Number_of_students" id="Number_of_students1" <?php if($dataquery_CPE04[2] == "1"){echo " checked ";} ?>value="1">
-			<label for="Number_of_students1"></label>
-			
-		</td>
-		<td>
-			<input type="radio" name="Number_of_students" id="Number_of_students2" <?php if($dataquery_CPE04[2] == "0"){echo " checked ";} ?>value="0">
-			<label for="Number_of_students2"></label>
-			
-		</td>
-		</tr>
-		<tr ><td>2. ที่มาและความสำคัญของปัญหา</td>
-		<td>
-			<input type="radio" name="importance" id="importance1" <?php if($dataquery_CPE04[3] == "1"){echo " checked ";} ?> value="1">
-			<label for="importance1"></label>
-			
-		</td>
-		<td>
-			<input type="radio" name="importance" id="importance2"  <?php if($dataquery_CPE04[3] == "0"){echo " checked ";} ?> value="0">
-			<label for="importance2"></label>
-			
-		</td>
-		</tr>
-		<tr ><td>3. วัตถุประสงค์ของโครงงาน</td>
-		<td>
-			<input type="radio" name="purpose" id="purpose1"  <?php if($dataquery_CPE04[4] == "1"){echo " checked ";} ?> value="1">
-			<label for="purpose1"></label>
-			
-		</td>
-		<td>
-			<input type="radio" name="purpose" id="purpose2"  <?php if($dataquery_CPE04[4] == "0"){echo " checked ";} ?> value="0">
-			<label for="purpose2"></label>
-			
-		</td>
-		</tr>
-		<tr ><td>4. การศึกษาเกี่ยวกับหลักการและทฤษฎีที่เกี่ยวข้อง</td>
-		<td>
-			<input type="radio" name="theories" id="theories1"  <?php if($dataquery_CPE04[5] == "1"){echo " checked ";} ?> value="1">
-			<label for="theories1"></label>
-			
-		</td>
-		<td>
-			<input type="radio" name="theories" id="theories2"  <?php if($dataquery_CPE04[5] == "0"){echo " checked ";} ?> value="0">
-			<label for="theories2"></label>
-			
-		</td>
-		</tr>
-		<tr ><td>5. ความเหมาะสมของวิธีการดำเนินงานที่นำเสนอ</td>
-		<td>
-			<input type="radio" name="Presentation" id="Presentation1"  <?php if($dataquery_CPE04[6] == "1"){echo " checked ";} ?> value="1">
-			<label for="Presentation1"></label>
-			
-		</td>
-		<td>
-			<input type="radio" name="Presentation" id="Presentation2"  <?php if($dataquery_CPE04[6] == "0"){echo " checked ";} ?> value="0">
-			<label for="Presentation2"></label>
-			
-		</td>
-		</tr>
-		<tr ><td>6. ขอบเขตของโครงงาน</td>
-		<td>
-			<input type="radio" name="scope" id="scope1"  <?php if($dataquery_CPE04[7] == "1"){echo " checked ";} ?> value="1">
-			<label for="scope1"></label>
-			
-		</td>
-		<td>
-			<input type="radio" name="scope" id="scope2"  <?php if($dataquery_CPE04[7] == "0"){echo " checked ";} ?> value="0">
-			<label for="scope2"></label>
-			
-		</td>
-		</tr>
-		
-		
-	 </tbody>
-	 </table >
-			<hr>
-			<h4>ข้อเสนอแนะ</h4>
-			<textarea placeholder="ข้อเสนอแนะ" name="suggestion" id="suggestion"  bg-White style="width: 700px" rows="6"><?php echo $dataquery_CPE04[8];?></textarea>
-			
-			<hr>
-			
-			<h4>สรุป</h4>
-			<table id="myTable4" class="order-list" style="width: 700px">
-	<thead>
-      <tr >
-        <th><center>ความเห็นของอาจารย์ผู้ประเมิน</center></th>
-        <th><center>มติกรรมการ</center></th>
-		
-		
-      </tr>
-    </thead>
-	<tbody>
-	<!--ส่วนสรุป-->
-	<center>
-	<tr>
-		<td>
-		<?php 
-			if($dataquery_CPE04[9] == 11)
-			{
-				echo "<div align=\"center\">ผ่าน</div>";
-			}
-			else if($dataquery_CPE04[9] == 12)
-			{
-				echo "<div align=\"center\">สมควร สอบใหม่</div>";
-			}
-			else if($dataquery_CPE04[9] == 13)
-			{
-				echo "<div align=\"center\">สมควรแก้ไข ไม่ต้องสอบใหม่</div>";
-			}
-			else
-			{
-				echo "<div align=\"center\">ไม่ผ่าน</div>";
-			}
-			
-		
-		?></td>
-		<td>
-		<?php 
-			if($dataquery_CPE04[10] == 21)
-			{
-				echo "<div align=\"center\">ผ่าน</div>";
-			}
-			else if($dataquery_CPE04[10] == 22)
-			{
-				echo "<div align=\"center\">สมควร สอบใหม่</div>";
-			}
-			else if($dataquery_CPE04[10] == 23)
-			{
-				echo "<div align=\"center\">สมควรแก้ไข ไม่ต้องสอบใหม่</div>";
-			}
-			else
-			{
-				echo "<div align=\"center\">ไม่ผ่าน</div>";
-			}
-			
-		
-		?>
-		</td>
-	</tr>
-	</center>
-	
-	</tbody>
-	 </table >
-			
-			
-		
-	
-		
-	
+
         </div>
 		
     </div>
-	
- 
 	
 	<div fluid card bg-Grey500="">
 
@@ -913,12 +812,10 @@
 			<br>
 		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
         </font>
-		
-		<div align=right>
-		<font color="white"> Page ID : 5 CPE 04 </font>
-		</div>
-	
         
+		<div align=right>
+		<font color="white"> Page ID : 5 CPE 03 </font>
+		</div>
 	</div>
 
 	
@@ -936,4 +833,5 @@
 	
   
   </body>
+
 </html>

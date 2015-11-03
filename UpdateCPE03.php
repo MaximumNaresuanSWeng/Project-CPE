@@ -30,7 +30,7 @@
 			
 			if($sum == 3)
 			{
-				$Update_project_status = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '6' WHERE  `Project`.`id` = '".$ID."'");
+				$Update_project_status = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '5' WHERE  `Project`.`id` = '".$ID."'");
 			}
 		
 		}
@@ -50,7 +50,7 @@
 			
 				if($sum == 3)
 				{
-					$Update_project_status = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '6' WHERE  `Project`.`id` = '".$ID."'");
+					$Update_project_status = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '5' WHERE  `Project`.`id` = '".$ID."'");
 				}
 				
 			}
@@ -70,7 +70,7 @@
 			
 					if($sum == 3)
 					{
-						$Update_project_status = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '6' WHERE  `Project`.`id` = '".$ID."'");
+						$Update_project_status = mysql_query ("UPDATE  `SWEN`.`Project` SET  `project_status` =  '5' WHERE  `Project`.`id` = '".$ID."'");
 					}
 					
 				}

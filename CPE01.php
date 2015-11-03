@@ -16,6 +16,8 @@
 		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
 		$project = mysql_fetch_array($query_project);
 		
+		
+		
 		$Student1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
 		$Student2 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[4]."'");
 		$Student3 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[5]."'");
@@ -115,14 +117,11 @@
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE02.php'\">CPE02</button>";
 				}
-				if($project[6] >= 4)
+				if($project[6] >= 2 && $project[6] < 4 && $project[10] !="")
 				{
 					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE03.php'\">CPE03</button>";
 				}
-				if($project[6] >= 6)
-				{
-					echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='CPE04.php'\">CPE04</button>";
-				}
+				
 				}
 				
 			?>
@@ -140,7 +139,7 @@
 	
 	     
 		 
-			<h4>ชื่อโครงงาน <?php echo $_SESSION["ID_project"];?></h4>
+			<h4>ชื่อโครงงาน </h4>
 			<form name="formdata" id="formdata" onsubmit="return required()" method="post" action="saveCPE01.php" >
 		
 			
@@ -859,7 +858,7 @@ else
 		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
         </font>
         
-		<div>
+		<div align=right>
 		<font color="white"> Page ID : 6 CPE 01 </font>
 		</div>
 	</div>

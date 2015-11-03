@@ -7,16 +7,13 @@
 	$password		= $_POST['password'];	
 	
 	
-	
-	
-	
 	include_once dirname(__FILE__) . '/Config.php';
 	mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD);
 	mysql_select_db(DB_NAME);
 	mysql_query("SET NAMES UTF8");
 	
 	
-	$query = mysql_query ("SELECT * FROM `USER` WHERE (username = '".$user."' OR email = '".$email."')AND password = '".$password."'");
+	$query = mysql_query ("SELECT * FROM `USER` WHERE (username = '".$user."' OR ID_USER = '".$user."')AND password = '".$password."'");
 		
 	$query1 = mysql_fetch_array($query);
 	
