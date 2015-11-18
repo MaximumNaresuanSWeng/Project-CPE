@@ -52,7 +52,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+<title>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร</title>
 
 
 <link rel="stylesheet" href="css/md-css.min.css">
@@ -197,7 +197,7 @@
         </font>
 		
 		<div align=right>
-		<font color="white"> Page ID : 3 </font>
+		<font color="white"> Page ID : 8 </font>
 		</div>
 	</div>
 

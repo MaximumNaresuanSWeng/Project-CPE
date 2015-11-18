@@ -10,7 +10,7 @@
 	
 		$ID = $_REQUEST['id'];
 		
-		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$_SESSION["ID_project"]."'");
+		$query_project = mysql_query ("SELECT * FROM `Project` WHERE id = '".$ID."'");
 		$project = mysql_fetch_array($query_project);
 		
 		$query_Student_USER1 = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[3]."'");
@@ -33,6 +33,9 @@
 		
 		$Special_Committee = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$project[10]."'");
 		$dataSpecial_Committee = mysql_fetch_array($Special_Committee);
+		
+		$query_CPE05 = mysql_query ("SELECT * FROM `CPE05` WHERE ID_project = '".$ID."'  ");
+		$dataquery_CPE05 = mysql_fetch_array($query_CPE05);
 		}
 		else
 		{
@@ -49,7 +52,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+<title>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร</title>
 
 
 <link rel="stylesheet" href="css/md-css.min.css">
@@ -122,7 +125,7 @@
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]=="")
 		{
-			echo "circle done";
+			echo "circle wait";
 			
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
@@ -348,11 +351,11 @@
 		
 		else if((($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] !="") ))
 		{
-			echo "circle done";			
+			echo "circle wait";			
 		}
 		else if((($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] !="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] !="") ))
 		{
-			echo "circle done";			
+			echo "circle wait";			
 		}
 		else if(($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] !=""))
 		{
@@ -448,13 +451,13 @@
 		}
 		else if($project[6]==7)	
 		{
-			echo "circle active";
+			echo "circle wait";
 		}	
 		else if($project[6]==8)	
 		{
-			echo "circle active";
+			echo "circle wait";
 		}	
-		else if($project[6]==9)	
+		else if($project[6]>=9&&$project[6]<999)	
 		{
 			echo "circle done";
 		}	
@@ -488,7 +491,7 @@
 		{
 			echo "&#8634;";
 		}	
-		else if($project[6]==9)	
+		else if($project[6]>=9&&$project[6]<999)	
 		{
 			echo "✔";
 		}			
@@ -519,7 +522,149 @@
 		{
 			echo"class=\"bar active\"";
 		}	
-		else if($project[6]==9)	
+		else if($project[6]>=9&&$project[6]<999)	
+		{
+			echo"class=\"bar done\"";
+		}	
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span> 
+ <!-------------------------------------------------------------------- CPE05 --------------------------------------------->
+  <div class="<?php
+		if($project[6]==9)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]==10)	
+		{
+			echo "circle fail";
+		}	
+		else if($project[6]>=11&&$project[6]<999)	
+		{
+			echo "circle done";
+		}	
+		else
+		{
+			echo "circle";			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=9&&$project[6]<999)
+		{
+			echo "onclick=\"location.href='ViewCPE05teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==9)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]==10)	
+		{
+			echo "✖";
+		}	
+		else if($project[6]>=11&&$project[6]<999)	
+		{
+			echo "✔";
+		}			
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
+    <span class="title">CPE05</span>
+  </div>
+  <span <?php
+		if($project[6]==9)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]==10)	
+		{
+			echo"class=\"bar \"";
+		}
+		else if($project[6]>=11&&$project[6]<999)	
+		{
+			echo"class=\"bar done\"";
+		}	
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span> 
+  <!--------------------------------------------------------- CPE06 -------------------------------------------------------------------> 
+ <div class="<?php
+		if($project[6]==11 || $project[6]==14)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]==12)	
+		{
+			echo "circle fail";
+		}
+		else if($project[6]>=13&&$project[6]<999)	
+		{
+			echo "circle done";
+		}	
+		else
+		{
+			echo "circle";			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=11&&$project[6]<999)
+		{
+			echo "onclick=\"location.href='ViewCPE06teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==11 || $project[6]==14)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]==12)	
+		{
+			echo "✖";
+		}	
+		else if($project[6]>=13&&$project[6]<999)	
+		{
+			echo "✔";
+		}			
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
+    <span class="title">CPE06</span>
+  </div>
+  <span <?php
+		if($project[6]==11 || $project[6]==14)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]==12)	
+		{
+			echo"class=\"bar \"";
+		}
+		else if($project[6]>=13&&$project[6]<999)	
 		{
 			echo"class=\"bar done\"";
 		}	
@@ -531,21 +676,72 @@
 	?>>	
   </span> 
   
-
-  <div class="circle">
-    <span class="label" >✖</span>
-    <span class="title">CPE05</span>
-  </div>
-  <span class="bar"></span>
-  <div class="circle">
-    <span class="label" >✖</span>
-    <span class="title">CPE06</span>
-  </div>
-  <span class="bar"></span>
-  <div class="circle">
-    <span class="label" >✖</span>
-    <span class="title">CPE07</span>
-  </div>
+<!--------------------------------------------------------- CPE07 -------------------------------------------------------------------> 
+ <div class="<?php
+		if($project[6]==13)
+		{
+			echo "circle active";			
+		}		
+		else if($project[6]==14)	
+		{
+			echo "circle fail";
+		}
+		else if($project[6]==15)	
+		{
+			echo "circle wait";
+		}	
+		else if($project[6]==16)	
+		{
+			echo "circle wait";
+		}	
+		else if($project[6]>=17&&$project[6]<999)	
+		{
+			echo "circle done";
+		}
+		else		
+		{
+			echo "circle";			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=13&&$project[6]<999)
+		{
+			echo "onclick=\"location.href='ViewCPE07teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	
+	
+	<?php
+		if($project[6]==13)
+		{
+			echo "✔";			
+		}
+		else if($project[6]==14)	
+		{
+			echo "✖";
+		}
+		else if($project[6]==15)	
+		{
+			echo "&#9998;";
+		}	
+		else if($project[6]==16)	
+		{
+			echo "&#8634;";
+		}	
+		else if($project[6]>=17&&$project[6]<999)	
+		{
+			echo "✔";
+		}			
+		else
+		{
+			echo "✖";			
+		}
+	?>
+	</span>
+	<span class="title">CPE07</span>
+</div>
+ 
 </div>
 				
 		</div>
@@ -698,48 +894,48 @@
 	
 		<tr ><td> 1. ความก้าวหน้าของการดำเนินงานเทียบกับแผน</td>
 		<td>
-			<input type="radio" name="progress_operations" id="progress_operations1" value="1">
+			<input type="radio" name="progress_operations" id="progress_operations1" <?php if($dataquery_CPE05[2] == "1"){echo " checked ";} ?> value="1" >
 			<label for="progress_operations1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="progress_operations" id="progress_operations2" value="0">
+			<input type="radio" name="progress_operations" id="progress_operations2" <?php if($dataquery_CPE05[2] == "0"){echo " checked ";} ?> value="0">
 			<label for="progress_operations2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>2. ความสมบูรณ์ของรายงานความก้าวหน้า</td>
 		<td>
-			<input type="radio" name="completion" id="completion1" value="1">
+			<input type="radio" name="completion" id="completion1"  <?php if($dataquery_CPE05[3] == "1"){echo " checked ";} ?> value="1">
 			<label for="completion1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="completion" id="completion2" value="0">
+			<input type="radio" name="completion" id="completion2"  <?php if($dataquery_CPE05[3] == "0"){echo " checked ";} ?> value="0">
 			<label for="completion2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>3. ความรู้ความเข้าใจของนิสิตเกี่ยวกับโครงงาน</td>
 		<td>
-			<input type="radio" name="Knowledge" id="Knowledge1" value="1">
+			<input type="radio" name="Knowledge" id="Knowledge1"  <?php if($dataquery_CPE05[4] == "1"){echo " checked ";} ?> value="1">
 			<label for="Knowledge1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="Knowledge" id="Knowledge2" value="0">
+			<input type="radio" name="Knowledge" id="Knowledge2"  <?php if($dataquery_CPE05[4] == "0"){echo " checked ";} ?> value="0">
 			<label for="Knowledge2"></label>
 			
 		</td>
 		</tr>
 		<tr ><td>4. การแบ่งงานและการทำงานเป็นทีม (กรณีมีนิสิตทำงานมากกว่า 1 คน)</td>
 		<td>
-			<input type="radio" name="teamwork" id="teamwork1" value="1">
+			<input type="radio" name="teamwork" id="teamwork1"  <?php if($dataquery_CPE05[5] == "1"){echo " checked ";} ?> value="1">
 			<label for="teamwork1"></label>
 			
 		</td>
 		<td>
-			<input type="radio" name="teamwork" id="teamwork2" value="0">
+			<input type="radio" name="teamwork" id="teamwork2"  <?php if($dataquery_CPE05[5] == "1"){echo " checked ";} ?> value="0">
 			<label for="teamwork2"></label>
 			
 		</td>
@@ -751,7 +947,7 @@
 	 </table >
 			<hr>
 			<h4>ข้อเสนอแนะ<font color="red">*</font></h4>
-			<textarea placeholder="ข้อเสนอแนะ" name="suggestion" id="suggestion"  bg-White style="width: 700px" rows="6"></textarea>
+			<textarea placeholder="ข้อเสนอแนะ" name="suggestion" id="suggestion"  bg-White style="width: 700px" rows="6"><?php echo $dataquery_CPE05[6];?></textarea>
 			
 			<hr>
 			
@@ -770,19 +966,29 @@
 	<!--ส่วนสรุป-->
 	<tr><td>ความเห็นของอาจารย์ที่ปรึกษา</td>
 	<td align="center">
-		<input type="radio" name="opinion_teacher" id="opinion_past1" value="11" >
+		<input type="radio" name="opinion_teacher" id="opinion_past1" <?php if($dataquery_CPE05[7] == "11"){echo " checked ";} ?> value="11" >
 		<label for="opinion_past1"></label></td>
 	<td align="center">
-		<input type="radio" name="opinion_teacher" id="opinion_fail1" value="10" >
+		<input type="radio" name="opinion_teacher" id="opinion_fail1" <?php if($dataquery_CPE05[7] == "10"){echo " checked ";} ?> value="10" >
 		<label for="opinion_fail1"></label></td>
 	</tr>
 	</tbody>
 	 </table >
 			<br>
 			
-			<button bg-Red500 ripple-color="tealA400" type="submit"> SAVE DATA</button>
-			
 			</form>
+			
+			<?php 
+			if($project[7] == $_SESSION["ID_USER"] || $project[8] == $_SESSION["ID_USER"])
+			{
+				if($project[6] == 9)
+				{
+					echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"required()\"> SAVE DATA</button>";
+				}
+				
+			}
+				
+			?>
 			
 			
 <script type="text/javascript"> 
@@ -806,6 +1012,16 @@
 		
 		return false;
 	}
+	else
+	{
+		$.getJSON('saveCPE05.php?id='+<?php echo $ID;?>+'&progress_operations='+progress_operations+'&completion='+completion
+		+'&Knowledge='+Knowledge+'&teamwork='+teamwork+'&suggestion='+suggestion+'&opinion_teacher='+opinion_teacher, function(jd1) {
+				
+				  
+               });
+				
+		window.location.replace("load_balance.php");		
+	}
 
 }
  </script>
@@ -821,6 +1037,9 @@
 			<br>
 		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
         </font>
+		<div align=right>
+		<font color="white"> Page ID : 9 CPE 05 </font>
+		</div>
         
 	</div>
 

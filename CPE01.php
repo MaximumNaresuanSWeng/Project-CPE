@@ -42,7 +42,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+<title>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร</title>
 
 
 <link rel="stylesheet" href="css/md-css.min.css">
@@ -165,7 +165,7 @@ function isThaichar(str,obj){
 	}
 	if(str_length>=1){
 		if(isThai==false){
-			obj.value=str.substr(0,str_length_end);
+			obj.value="";
 		}
 	}
 	return isThai; // ถ้าเป็น true แสดงว่าเป็นภาษาไทยทั้งหมด
@@ -185,7 +185,7 @@ function isENchar(str,obj){
 	}
 	if(str_length>=1){
 		if(isThai==false){
-			obj.value=str.substr(0,str_length_end);
+			obj.value="";
 		}
 	}
 	return isThai; // ถ้าเป็น true แสดงว่าเป็นภาษาไทยทั้งหมด
@@ -232,7 +232,7 @@ function isENchar(str,obj){
 			</div></td>
 			<td><div align="center">
 			
-			<input   value="<?php echo $Student1_data[8];?>"  type="text" id="ID_USER1" name="ID_USER1"   bg-White />
+			<input   value="<?php echo $Student1_data[8];?>"  onkeyup="ClearCHECK()" type="text" id="ID_USER1" name="ID_USER1"   bg-White />
 			
 			</div></td>
 			<td><div align="center">
@@ -247,8 +247,9 @@ function isENchar(str,obj){
 			</div></td>
 			<td>
 			<?php 
-			if($project[3] != NULL)
+			if($project[3] != NULL && $project[3] == $_SESSION["ID_USER"])
 			{
+				
 				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return delete1()\">DELETE</button>";
 			}
 			else
@@ -287,7 +288,7 @@ function isENchar(str,obj){
 			</div></td>
 			<td><div align="center">
 			<?php 
-			if($project[4] != NULL)
+			if($project[4] != NULL && $project[4] == $_SESSION["ID_USER"])
 			{
 				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return delete2()\">DELETE</button>";
 			}
@@ -329,7 +330,7 @@ function isENchar(str,obj){
 			<td><div align="center">
 			
 			<?php 
-			if($project[5] != NULL)
+			if($project[5] != NULL && $project[5] == $_SESSION["ID_USER"])
 			{
 				echo "<button bg-Red500 ripple-color=\"tealA400\" onclick=\"return delete3()\">DELETE</button>";
 			}
@@ -449,6 +450,14 @@ function isENchar(str,obj){
  var click1 = <?php if($Student1_data[8] != NULL) {echo "true";} else{echo "false";}?>;
  var click2 = <?php if($Student1_data[8] != NULL) {echo "true";} else{echo "false";}?>;
  var click3 = <?php if($Student1_data[8] != NULL) {echo "true";} else{echo "false";}?>;
+ var check_data;
+ var check_data2;
+ 
+   function ClearCHECK()
+   {
+	   document.getElementById("btn_update").disabled = true;
+   }
+  
   function   UPDATE_PROJECT()
 {
 var name_projectTH = document.forms["formdata"]["name_projectTH"].value;
@@ -461,9 +470,10 @@ var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
 	$.getJSON('UPDATE_PROJECT.php?name_projectTH='+name_projectTH+"&name_projectEN="+name_projectEN+"&ID_USER1="+ID_USER1+"&ID_USER2="+ID_USER2+"&ID_USER3="+ID_USER3, function(jd1) {
 				
 				  
+				  
                });
 				
-	window.location.replace("CPE01.php?ijoijo=jhbjo");			  
+				  window.location.replace("CPE01.php");
      
 	return false;
 }
@@ -473,10 +483,10 @@ var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
 		
 	$.getJSON('DeleteMember.php?idMember='+<?php if($Student1_data[0] != NULL){echo $Student1_data[0];}else {echo "000";}?>+"&number=1", function(jd1) {
 				
-				  
+				  window.location.replace("CPE01.php");	
                });
 				
-	window.location.replace("CPE01.php");			  
+			  
      
 	return false;
 }
@@ -485,9 +495,9 @@ var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
 		
 		$.getJSON('DeleteMember.php?idMember='+<?php if($Student2_data[0] != NULL){echo $Student2_data[0];}else {echo "000";}?>+"&number=2", function(jd1) {
 				
-				  
+				  window.location.replace("CPE01.php");
                });
-	window.location.replace("CPE01.php");		
+			
 	return false;
 }
  function   delete3()
@@ -495,9 +505,9 @@ var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
 		
 		$.getJSON('DeleteMember.php?idMember='+<?php if($Student3_data[0] != NULL){echo $Student3_data[0];}else {echo "000";}?>+"&number=3", function(jd1) {
 				
-				  
+				  window.location.replace("CPE01.php");	
                });
-	window.location.replace("CPE01.php");		
+		
 	return false;
 }
 
@@ -530,8 +540,8 @@ function   checkdata1()
 				  document.forms["formdata"]["phone_number1"].value = "";
 				  document.forms["formdata"]["email1"].value = "";
 				  click1 = false;
-				  swal({title: "ไม่พบข้อมูล",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
-				  //alert("ไม่พบข้อมูล ");
+				  swal({title: "ไม่พบข้อมูล หรือ นิสิตมีโครงงานแล้ว",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+				 
 				}
 				else
 				{
@@ -541,6 +551,7 @@ function   checkdata1()
 				  document.forms["formdata"]["phone_number1"].value = jd.phone_number;
 				  document.forms["formdata"]["email1"].value = jd.email;
 				  click1 = true;
+				  document.getElementById("btn_update").disabled = false;
 				}
                   
 				  
@@ -574,25 +585,33 @@ function   checkdata2()
 		{
 			$.getJSON('GetUser.php?id='+ID_USER2, function(jd) {
 				
-				if( jd.firstnameTH == null)
-				{
-				  document.forms["formdata"]["name_student2"].value = "";
-				  document.forms["formdata"]["ID_USER2"].value = "";
-				  document.forms["formdata"]["phone_number2"].value = "";
-				  document.forms["formdata"]["email2"].value = "";
-				  click2 = false;
-				  swal({title: "ไม่พบข้อมูล",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
-				  //alert("ไม่พบข้อมูล ");
-				}
-				else
-				{
-				  swal("สำเร็จ", "เพิ่มเติมข้อมูลเรียบร้อย", "success");
-				  document.forms["formdata"]["name_student2"].value = jd.firstnameTH+" "+jd.lastnameTH;
-				  document.forms["formdata"]["ID_USER2"].value = jd.ID_USER;
-				  document.forms["formdata"]["phone_number2"].value = jd.phone_number;
-				  document.forms["formdata"]["email2"].value = jd.email;
-				  click2 = true;
-				}
+				
+					if( jd.firstnameTH == null)
+					{
+						document.forms["formdata"]["name_student2"].value = "";
+						document.forms["formdata"]["ID_USER2"].value = "";
+						document.forms["formdata"]["phone_number2"].value = "";
+						document.forms["formdata"]["email2"].value = "";
+						click2 = false;
+						swal({title: "ไม่พบข้อมูล หรือ นิสิตมีโครงงานแล้ว",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+				  
+					}
+					else
+					{
+					  swal("สำเร็จ", "เพิ่มเติมข้อมูลเรียบร้อย", "success");
+					  document.forms["formdata"]["name_student2"].value = jd.firstnameTH+" "+jd.lastnameTH;
+					  document.forms["formdata"]["ID_USER2"].value = jd.ID_USER;
+					  document.forms["formdata"]["phone_number2"].value = jd.phone_number;
+					  document.forms["formdata"]["email2"].value = jd.email;
+					  click2 = true;
+					  document.getElementById("btn_update").disabled = false;
+					  return false;
+					}
+				
+				
+				
+				
+				
                   
 				  
                });
@@ -632,8 +651,8 @@ function   checkdata3()
 				  document.forms["formdata"]["phone_number3"].value = "";
 				  document.forms["formdata"]["email3"].value = "";
 				  click3 = false;
-				  swal({title: "ไม่พบข้อมูล",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
-				  //alert("ไม่พบข้อมูล ");
+				  swal({title: "ไม่พบข้อมูล หรือ นิสิตมีโครงงานแล้ว",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+				  
 				}
 				else
 				{
@@ -643,6 +662,7 @@ function   checkdata3()
 				  document.forms["formdata"]["phone_number3"].value = jd.phone_number;
 				  document.forms["formdata"]["email3"].value = jd.email;
 				  click3 = true;
+				  document.getElementById("btn_update").disabled = false;
 				}
                   
 				  
@@ -663,8 +683,15 @@ var Advisors = document.forms["formdata"]["Advisors"].value;
 var Co_Advisors = document.forms["formdata"]["Co_Advisors"].value;
 var Committee = document.forms["formdata"]["Committee"].value;
 
+		var ID_USER1 = document.forms["formdata"]["ID_USER1"].value;
+		var ID_USER2 = document.forms["formdata"]["ID_USER2"].value;
+		var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
+		
+var ID_CHECK = "<?php echo $_SESSION["ID_USER"];?>";
 
-if (name_projectTH == "" || name_projectEN == "" || ID_USER1 == "" || Advisors == "" || Committee == "")
+if(ID_CHECK == ID_USER1 || ID_CHECK == ID_USER2 || ID_CHECK == ID_USER3)
+{
+	if (name_projectTH == "" || name_projectEN == "" || ID_USER1 == "" || Advisors == "" || Committee == "")
 {
 	//alert("กรุณาป้อนข้อมูลช่องที่มี * ");
 	swal({title: "กรุณาป้อนข้อมูลช่องที่มี * ",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
@@ -681,9 +708,7 @@ else
 	}
 	else
 	{
-		var ID_USER1 = document.forms["formdata"]["ID_USER1"].value;
-		var ID_USER2 = document.forms["formdata"]["ID_USER2"].value;
-		var ID_USER3 = document.forms["formdata"]["ID_USER3"].value;
+		
 		if(ID_USER2 == "")
 		{
 			if(ID_USER3 == "")
@@ -819,30 +844,53 @@ else
 }
 
 }
+else
+{
+	swal({title: "USER ต้องอยู่ใยรายชื่อ",      type: "warning",confirmButtonColor: "#F44336",   confirmButtonText: "OK",   closeOnConfirm: false });
+	return false;
+}
+
+
+}
  </script>
       
     </tbody>
     <tfoot>
         
         <tr>
-            <td>
-			<center>
-				<?php 
-				if($project[0] != NULL)
-				{
-					echo "<button bg-Green500 ripple-color=\"tealA400\" onclick=\"return UPDATE_PROJECT()\">UPDATE PROJECT</button>";
-				}
-				?>
-				<button bg-Red500 ripple-color="tealA400" type="submit"> NEW PROJECT</button>
-			</center>
-            </td>
+           
+			
+           
         </tr>
     </tfoot>
 </table>
-
+			<center>
+				
+				<?php 
+				if($_SESSION["ID_project"] == "")
+				{
+					
+						echo "<button bg-Red500 ripple-color=\"tealA400\" type=\"submit\"> NEW PROJECT</button>";
+					
+					
+				}
+				//echo $_SESSION["ID_project"]."test ffffff";
+				?>
+				
+			</center>
 		</form>
-		
-	
+		<center>
+		<?php 
+				if($project[0] != NULL)
+				{
+					if($project[6] < 5)
+					{
+						echo "<button id=\"btn_update\" disabled bg-Green500 ripple-color=\"tealA400\" onclick=\"UPDATE_PROJECT()\">UPDATE PROJECT</button>";
+					}
+					
+				}
+				?>
+		</center>
 		
 	
         </div>

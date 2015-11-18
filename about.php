@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+<title>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร</title>
 
 
 <link rel="stylesheet" href="css/md-css.min.css">
@@ -32,6 +32,10 @@
 			if($_SESSION["status"] == "student")
 			{
 				echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='ViewCPE01.php'\">View</button>";
+			}
+			if($_SESSION["status"] == "Admin")
+			{
+				echo"<button bg-teal ripple-color='tealA400' onclick=\"location.href='Add_news.php'\">Add News</button>";
 			}
 			echo "<button bg-teal ripple-color='tealA400' onclick=\"location.href='about.php'\">About</button>";
 			echo "<button bg-Red500 ripple-color='tealA400' onclick=\"location.href='logout.php'\">Log Out</button>";

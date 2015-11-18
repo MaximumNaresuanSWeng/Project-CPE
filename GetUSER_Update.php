@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 	header('Content-type: text/plain; charset=utf-8');
 	session_start();
@@ -10,18 +10,10 @@
 	mysql_select_db(DB_NAME);
 	mysql_query("SET NAMES UTF8");
 	
-	$query_Student_USER = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$ID."' AND ID_project = '' ");
+	$query_Student_USER = mysql_query ("SELECT * FROM `USER` WHERE ID_USER = '".$ID."' ");
 	$Student_USER = mysql_fetch_array($query_Student_USER);
 	
-/* 	$emtry = true;
-	if($Student_USER)
-	{
-		$emtry = false;
-	}
-	else
-	{
-		$emtry = true;
-	} */
+
 	
 	$var = array('emtry'=>$emtry,'email'=>$Student_USER[2],'firstnameTH'=>$Student_USER[4],'lastnameTH'=>$Student_USER[5],'firstnameEN'=>$Student_USER[6],'lastnameEN'=>$Student_USER[7],'ID_USER'=>$Student_USER[8],'phone_number'=>$Student_USER[9],'ID_project'=>$Student_USER[10]);
 	

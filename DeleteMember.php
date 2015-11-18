@@ -33,6 +33,8 @@
 																	  `ID_Student2` =  '".$project[5]."',
 																	  `ID_Student3` =  '' 
 																	  WHERE  `Project`.`id` = '".$_SESSION["ID_project"]."'");
+																	  
+		$_SESSION["ID_project"]  = "" ;
 	}
 	else
 	{
@@ -43,6 +45,7 @@
 																	  `ID_Student2` =  '".$project[4]."',
 																	  `ID_Student3` =  '' 
 																	  WHERE  `Project`.`id` = '".$_SESSION["ID_project"]."'");
+		$_SESSION["ID_project"]  = "" ;
 	}
 	
 		

@@ -54,7 +54,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+<title>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร</title>
 
 
 <link rel="stylesheet" href="css/md-css.min.css">
@@ -125,7 +125,7 @@
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]=="")
 		{
-			echo "circle done";
+			echo "circle wait";
 			
 		}
 		else if($project[6]>=2&&$project[6]<999&&$project[10]!="")
@@ -351,11 +351,11 @@
 		
 		else if((($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] =="" && $project_CPE03[3] =="" && $project_CPE03[4] !="") ))
 		{
-			echo "circle done";			
+			echo "circle wait";			
 		}
 		else if((($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] =="")||($project_CPE03[2] !="" && $project_CPE03[3] =="" && $project_CPE03[4] !="")||($project_CPE03[2] =="" && $project_CPE03[3] !="" && $project_CPE03[4] !="") ))
 		{
-			echo "circle done";			
+			echo "circle wait";			
 		}
 		else if(($project_CPE03[2] !="" && $project_CPE03[3] !="" && $project_CPE03[4] !=""))
 		{
@@ -445,19 +445,19 @@
 			echo "circle active";
 			
 		}
-		else if($project[6]==6)	
+		else if($project[6]==6&&$project[6]<999)	
 		{
 			echo "circle fail";
 		}
-		else if($project[6]==7)	
+		else if($project[6]==7&&$project[6]<999)	
 		{
-			echo "circle active";
+			echo "circle wait";
 		}	
-		else if($project[6]==8)	
+		else if($project[6]==8&&$project[6]<999)	
 		{
-			echo "circle active";
+			echo "circle wait";
 		}	
-		else if($project[6]==9)	
+		else if($project[6]>=9&&$project[6]<999)	
 		{
 			echo "circle done";
 		}	
@@ -491,7 +491,7 @@
 		{
 			echo "&#8634;";
 		}	
-		else if($project[6]==9)	
+		else if($project[6]>=9&&$project[6]<999)	
 		{
 			echo "✔";
 		}			
@@ -522,7 +522,7 @@
 		{
 			echo"class=\"bar active\"";
 		}	
-		else if($project[6]==9)	
+		else if($project[6]>=9&&$project[6]<999)	
 		{
 			echo"class=\"bar done\"";
 		}	
@@ -534,21 +534,216 @@
 	?>>	
   </span> 
   
-
-  <div class="circle">
-    <span class="label" >✖</span>
+  <!-------------------------------------------------------------------- CPE05 --------------------------------------------->
+  <div class="<?php
+		if($project[6]==9)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]==10)	
+		{
+			echo "circle fail";
+		}	
+		else if($project[6]>=11&&$project[6]<999)	
+		{
+			echo "circle done";
+		}	
+		else
+		{
+			echo "circle";			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=9&&$project[6]<999)
+		{
+			echo "onclick=\"location.href='ViewCPE05teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==9)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]==10)	
+		{
+			echo "✖";
+		}	
+		else if($project[6]>=11&&$project[6]<999)	
+		{
+			echo "✔";
+		}			
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
     <span class="title">CPE05</span>
   </div>
-  <span class="bar"></span>
-  <div class="circle">
-    <span class="label" >✖</span>
+  <span <?php
+		if($project[6]==9)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]==10)	
+		{
+			echo"class=\"bar \"";
+		}
+		else if($project[6]>=11&&$project[6]<999)	
+		{
+			echo"class=\"bar done\"";
+		}	
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span> 
+  
+  <!--------------------------------------------------------- CPE06 -------------------------------------------------------------------> 
+ <div class="<?php
+		if($project[6]==11 || $project[6]==14)
+		{
+			echo "circle active";
+			
+		}
+		else if($project[6]==12)	
+		{
+			echo "circle fail";
+		}
+		else if($project[6]>=13&&$project[6]<999)	
+		{
+			echo "circle done";
+		}	
+		else
+		{
+			echo "circle";			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=11&&$project[6]<999)
+		{
+			echo "onclick=\"location.href='ViewCPE06teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	<?php
+		if($project[6]==11 || $project[6]==14)
+		{
+			echo "✔";
+			
+		}
+		else if($project[6]==12)	
+		{
+			echo "✖";
+		}	
+		else if($project[6]>=13&&$project[6]<999)	
+		{
+			echo "✔";
+		}			
+		else
+		{
+			echo "✖";
+			
+		}
+	?>
+	</span>
     <span class="title">CPE06</span>
   </div>
-  <span class="bar"></span>
-  <div class="circle">
-    <span class="label" >✖</span>
-    <span class="title">CPE07</span>
-  </div>
+  <span <?php
+		if($project[6]==11 || $project[6]==14)
+		{
+			echo"class=\"bar active\"";
+			
+		}
+		else if($project[6]==12)	
+		{
+			echo"class=\"bar \"";
+		}
+		else if($project[6]>=13&&$project[6]<999)	
+		{
+			echo"class=\"bar done\"";
+		}	
+		else
+		{
+			echo"class=\"bar\"";
+			
+		}
+	?>>	
+  </span> 
+
+<!--------------------------------------------------------- CPE07 -------------------------------------------------------------------> 
+ <div class="<?php
+		if($project[6]==13)
+		{
+			echo "circle active";			
+		}		
+		else if($project[6]==14)	
+		{
+			echo "circle fail";
+		}
+		else if($project[6]==15)	
+		{
+			echo "circle wait";
+		}	
+		else if($project[6]==16)	
+		{
+			echo "circle wait";
+		}	
+		else if($project[6]>=17&&$project[6]<999)	
+		{
+			echo "circle done";
+		}
+		else		
+		{
+			echo "circle";			
+		}
+		?>">
+    <span class="label" 
+	<?php
+		if($project[6]>=13&&$project[6]<999)
+		{
+			echo "onclick=\"location.href='ViewCPE07teacher.php?id=".$ID."'\"";
+		}	
+	?>>
+	
+	
+	<?php
+		if($project[6]==13)
+		{
+			echo "✔";			
+		}
+		else if($project[6]==14)	
+		{
+			echo "✖";
+		}
+		else if($project[6]==15)	
+		{
+			echo "&#9998;";
+		}	
+		else if($project[6]==16)	
+		{
+			echo "&#8634;";
+		}	
+		else if($project[6]>=17&&$project[6]<999)	
+		{
+			echo "✔";
+		}			
+		else
+		{
+			echo "✖";			
+		}
+	?>
+	</span>
+	<span class="title">CPE07</span>
+</div>  
+
 </div>
 				
 		</div>
@@ -776,7 +971,9 @@ function confirm(status,id)
 			<br>
 		<center><a1>copyright © 2015 Maximum Group | 305471 Software Engineering ภาคการศึกษาที่ 1  ปีการศึกษา  2558</a1></center>
         </font>
-        
+        <div align=right>
+		<font color="white"> Page ID : 9 CPE 01 </font>
+		</div>
 
 	</div>
 

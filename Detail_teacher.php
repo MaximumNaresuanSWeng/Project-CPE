@@ -41,7 +41,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-<title>ระบบป้อนข้อมูลอะไรสักอย่าง</title>
+<title>ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร</title>
 
 
 <link rel="stylesheet" href="css/md-css.min.css">
@@ -157,6 +157,9 @@
 											  
 											
 										  }
+										  else{}
+										  
+										  
 								if($dataAdvisors[6]==1)
 								{
 									echo "รอการยืนยัน  CPE01 ";
@@ -165,14 +168,7 @@
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
-								else if($sum == 1)
-								{	
-									echo "ไม่มีสถานะการแจ้งเตือน ";
-									echo "</div></td>";
-									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
-									echo "</div></td>";		
-								}
+								
 								else if($sum == 0)
 								{
 									echo "รอยืนยัน  CPE02 ";
@@ -181,7 +177,7 @@
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
-								else if($dataAdvisors[6]==4&&$query_committycpe03data[2]=="")
+								else if($dataAdvisors[6]== 4 && $query_committycpe03data[2]=="")
 								{	
 									echo "รอการยืนยัน  CPE03";
 									echo "</div></td>";
@@ -191,10 +187,34 @@
 								}				
 								else if($dataAdvisors[6]==5)
 								{
-									echo "ไม่มีสถานะการแจ้งเตือน  ";
+									echo "รอการยืนยัน  CPE04 ";
 									echo "</div></td>";
 									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE04teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==9)
+								{
+									echo "รอการยืนยัน  CPE05 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE05teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==11)
+								{
+									echo "รอการยืนยัน  CPE06 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE06teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataAdvisors[6]==13)
+								{
+									echo "รอการยืนยัน  CPE07 ";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE07teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
 								else if($dataAdvisors[6]==999)
@@ -213,6 +233,7 @@
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataAdvisors[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
+								
 							?>
 							
 					</tr>
@@ -291,6 +312,7 @@
 											  
 											
 										  }
+										   else{}
 										 
 										
 								if($dataCo_Advisors[6]==1)
@@ -300,14 +322,6 @@
 									echo "<td><div align=\"center\">";
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
-								}
-								else if($sum == 1)
-								{	
-									echo "ไม่มีสถานะการแจ้งเตือน";
-									echo "</div></td>";
-									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
-									echo "</div></td>";		
 								}
 								else if($sum == 0)
 								{
@@ -328,10 +342,34 @@
 								
 								else if($dataCo_Advisors[6]==5)
 								{
-									echo "ไม่มีสถานะการแจ้งเตือน ";
+									echo "รอการยืนยัน  CPE04";
 									echo "</div></td>";
 									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE04teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataCo_Advisors[6]==9)
+								{
+									echo "รอการยืนยัน  CPE05";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE05teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataCo_Advisors[6]==11)
+								{
+									echo "รอการยืนยัน  CPE06";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE06teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataCo_Advisors[6]==13)
+								{
+									echo "รอการยืนยัน  CPE07";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE07teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
 								else if($dataCo_Advisors[6]==999)
@@ -350,7 +388,9 @@
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCo_Advisors[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
+								
 							?>
+							
 					</tr>
 					<?php
 					}
@@ -427,6 +467,7 @@
 											  
 											
 										  }
+										   else{}
 										 
 										
 								if($dataCommittee[6]==1)
@@ -436,14 +477,6 @@
 									echo "<td><div align=\"center\">";
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
-								}
-								else if($sum == 1)
-								{	
-									echo "ไม่มีสถานะการแจ้งเตือน";
-									echo "</div></td>";
-									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
-									echo "</div></td>";		
 								}
 								else if($sum == 0)
 								{
@@ -464,12 +497,37 @@
 								
 								else if($dataCommittee[6]==5)
 								{
-									echo "ไม่มีสถานะการแจ้งเตือน ";
+									echo "รอการยืนยัน  CPE04";
 									echo "</div></td>";
 									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE04teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
+								else if($dataCommittee[6]==9)
+								{
+									echo "รอการยืนยัน  CPE05";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE05teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataCommittee[6]==11)
+								{
+									echo "รอการยืนยัน  CPE06";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE06teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataCommittee[6]==13)
+								{
+									echo "รอการยืนยัน  CPE07";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE07teacher.php?id=".$dataCommittee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								
 								else if($dataCommittee[6]==999)
 								{
 									echo "ไม่ได้รับการยืนยัน ";
@@ -533,6 +591,7 @@
 											  
 											
 										  }
+										   else{}
 										 
 										
 								if($dataSpecial_Committee[6]==1)
@@ -543,14 +602,6 @@
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
-								else if(sum == 1)
-								{	
-									echo "ไม่มีสถานะการแจ้งเตือน";
-									echo "</div></td>";
-									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
-									echo "</div></td>";		
-								}
 								else if($sum == 0)
 								{
 									echo "รอยืนยัน  CPE02 ";
@@ -559,7 +610,7 @@
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE02teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
-								else if($dataSpecial_Committee[6]==4&&$query_committycpe03data[3]=="")
+								else if($dataSpecial_Committee[6]==4&&$query_committycpe03data[4]=="")
 								{	
 									echo "รอการยืนยัน  CPE03";
 									echo "</div></td>";
@@ -570,12 +621,37 @@
 								
 								else if($dataSpecial_Committee[6]==5)
 								{
-									echo "ไม่มีสถานะการแจ้งเตือน ";
+									echo "รอการยืนยัน  CPE04";
 									echo "</div></td>";
 									echo "<td><div align=\"center\">";
-									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE04teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
+								else if($dataSpecial_Committee[6]==9)
+								{
+									echo "รอการยืนยัน  CPE05";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE05teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataSpecial_Committee[6]==11)
+								{
+									echo "รอการยืนยัน  CPE06";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE06teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								else if($dataSpecial_Committee[6]==13)
+								{
+									echo "รอการยืนยัน  CPE07";
+									echo "</div></td>";
+									echo "<td><div align=\"center\">";
+									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE07teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
+									echo "</div></td>";
+								}
+								
 								else if($dataSpecial_Committee[6]==999)
 								{
 									echo "ไม่ได้รับการยืนยัน ";
@@ -592,6 +668,7 @@
 									echo "<button bg-teal ripple-color=\"tealA400\" onclick=\"location.href='ViewCPE01teacher.php?id=".$dataSpecial_Committee[0]."&state=Committee'\">Read more</button>";
 									echo "</div></td>";
 								}
+								
 							?>
 					</tr>
 					<?php
